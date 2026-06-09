@@ -1,21 +1,18 @@
 const DRILLS = [
   {
     name: "매일, 한마디",
-    alias: "말매잘",
     short: "자유 스피치",
     desc: "가챠로 뽑힌 한 가지 주제에 대해 60초간 자유롭게 발화. 5개 차원 전부로 점수가 매겨지는 메인 드릴.",
     duration: "60s",
   },
   {
     name: "따라 읽기",
-    alias: "발미잘",
     short: "대본 낭독",
     desc: "그날의 짧은 뉴스 대본을 그대로 낭독. 발성·발음·유창성의 기본기를 점검합니다.",
     duration: "60–120s",
   },
   {
     name: "세줄 요약",
-    alias: "재진잘",
     short: "재진술 드릴",
     desc: "기사 한 편을 읽고 핵심을 내 말로 옮겨 말하기. 핵심 문장 커버리지까지 함께 표시.",
     duration: "30s",
@@ -52,7 +49,7 @@ export function Features() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-24">
           {DRILLS.map((d) => (
             <div
-              key={d.alias}
+              key={d.name}
               className="bg-haze-grey rounded-xl p-6 flex flex-col gap-3"
             >
               <div className="flex items-center justify-between">
@@ -66,7 +63,6 @@ export function Features() {
               <h3 className="font-display text-2xl text-charcoal-text">
                 {d.name}
               </h3>
-              <p className="text-xs text-charcoal-text/50">별칭 · {d.alias}</p>
               <p className="text-sm text-charcoal-text leading-relaxed">
                 {d.desc}
               </p>

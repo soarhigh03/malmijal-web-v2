@@ -26,7 +26,6 @@ html {
 body {
   font-family: var(--font-body);
   color: var(--color-charcoal-text);
-  letter-spacing: -0.1em;
 }
 
 /* ---- Entrance fades ---- */
@@ -93,6 +92,77 @@ body {
   to   { opacity: 1; transform: scale(1)    translateY(0); }
 }
 .animate-logo-enter { animation: logo-enter 1.1s cubic-bezier(0.16, 1, 0.3, 1) both; }
+
+/* ---- Blog markdown typography ---- */
+.prose-blog {
+  font-size: 1rem;
+  line-height: 1.8;
+}
+.prose-blog > * + * { margin-top: 1.25rem; }
+.prose-blog h2 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-top: 3rem;
+  color: #fff;
+}
+.prose-blog h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-top: 2.25rem;
+  color: #fff;
+}
+.prose-blog p { margin: 0; }
+.prose-blog ul, .prose-blog ol {
+  padding-left: 1.5rem;
+  margin: 0;
+}
+.prose-blog ul { list-style: disc; }
+.prose-blog ol { list-style: decimal; }
+.prose-blog li { margin: 0.35rem 0; }
+.prose-blog li > ul, .prose-blog li > ol { margin-top: 0.35rem; }
+.prose-blog blockquote {
+  border-left: 3px solid rgba(255,255,255,0.3);
+  padding: 0.25rem 0 0.25rem 1.25rem;
+  color: rgba(255,255,255,0.85);
+  font-style: italic;
+}
+.prose-blog blockquote > * { margin: 0; }
+.prose-blog code {
+  background: rgba(255,255,255,0.08);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 0.88em;
+}
+.prose-blog pre {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 1rem 1.25rem;
+  border-radius: 10px;
+  overflow-x: auto;
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+.prose-blog pre code {
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  font-size: inherit;
+}
+.prose-blog strong { font-weight: 600; color: #fff; }
+.prose-blog em { font-style: italic; }
+.prose-blog a {
+  color: var(--color-action-blue);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.prose-blog hr {
+  border: 0;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  margin: 2.5rem 0;
+}
 
 @media (prefers-reduced-motion: reduce) {
   .animate-drift-1,

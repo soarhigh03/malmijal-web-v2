@@ -20,7 +20,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko">
-      <head>
+      <body className="min-h-screen bg-[#070b1c]">
         <link
           rel="preconnect"
           href="https://cdn.jsdelivr.net"
@@ -30,8 +30,8 @@ export default function RootLayout({
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css"
         />
-      </head>
-      <body className="min-h-screen bg-[#070b1c]">{children}</body>
+        {children}
+      </body>
     </html>
   );
 }
