@@ -57,7 +57,9 @@ export function Header() {
         </nav>
 
         <a
-          href="#download"
+          href="https://apps.apple.com/kr/app/말미잘/id6769989593"
+          target="_blank"
+          rel="noopener noreferrer"
           className="hidden md:inline-flex items-center justify-center px-6 py-3 rounded-full font-kopub text-sm text-white bg-black hover:bg-black/85 transition-colors"
         >
           다운로드
@@ -113,7 +115,9 @@ export function Header() {
               );
             })}
             <a
-              href="#download"
+              href="https://apps.apple.com/kr/app/말미잘/id6769989593"
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={() => setOpen(false)}
               className="mt-3 inline-flex items-center justify-center px-4 py-3 rounded-full font-kopub text-base text-white bg-black"
             >
