@@ -1,26 +1,26 @@
 export function Footer() {
   return (
-    <footer
-      id="contact"
-      className="bg-[#f0f0f0] border-t border-black/10"
-    >
-      <div className="mx-auto max-w-7xl px-6 sm:px-10 py-16 flex flex-col md:flex-row md:items-end md:justify-between gap-10">
-        <div>
-          <p className="font-kopub text-black text-3xl mb-3">말미잘</p>
-          <p className="text-black/65 text-sm max-w-md leading-relaxed">
-            말, 미친듯이 잘하기. 매일 짧은 녹음으로 한국어 말하기를 훈련하는
-            음성 코칭 앱.
-          </p>
-        </div>
-        <div className="flex flex-col gap-2 text-sm text-black/65">
+    <footer id="contact" className="bg-canvas border-t border-black/10">
+      <div className="mx-auto max-w-7xl px-6 sm:px-10 py-8 sm:py-10 flex flex-col gap-3 text-xs sm:text-sm text-black/60">
+        <p className="flex flex-wrap items-center gap-x-2 gap-y-1">
+          <span className="font-medium text-black/80">에토세토라</span>
+          <span aria-hidden className="text-black/30">|</span>
+          <span>대표자 박병호</span>
+          <span aria-hidden className="text-black/30">|</span>
+          <span>사업자등록번호 418-23-02270</span>
+          <span aria-hidden className="text-black/30">|</span>
           <a
-            href="mailto:hello@malmijal.app"
+            href="mailto:malmijal.team@gmail.com"
             className="hover:text-black transition-colors"
           >
-            hello@malmijal.app
+            malmijal.team@gmail.com
           </a>
-          <p>© {new Date().getFullYear()} Malmijal</p>
-        </div>
+        </p>
+        <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-black/50">
+          <span>서울특별시 서초구 강남대로61길 23</span>
+          <span aria-hidden>·</span>
+          <span>© 2026 에토세토라</span>
+        </p>
       </div>
     </footer>
   );
