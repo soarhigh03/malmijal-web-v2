@@ -85,6 +85,31 @@ body {
 .animate-mouth-mid   { animation: mouth-fan-mid 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.08s both; }
 .animate-mouth-front { animation: mouth-fan-front 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.16s both; }
 
+/* ---- FAQ markdown answer typography ---- */
+.faq-answer p { margin: 0; }
+.faq-answer p + p { margin-top: 0.75rem; }
+.faq-answer ul, .faq-answer ol {
+  padding-left: 1.25rem;
+  margin: 0.5rem 0;
+}
+.faq-answer ul { list-style: disc; }
+.faq-answer ol { list-style: decimal; }
+.faq-answer li { margin: 0.2rem 0; }
+.faq-answer strong { font-weight: 600; color: #000; }
+.faq-answer em { font-style: italic; }
+.faq-answer a {
+  color: #2b7fff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.faq-answer code {
+  background: rgba(0,0,0,0.06);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 0.88em;
+}
+
 /* ---- Blog markdown typography (kept for /blog) ---- */
 .prose-blog {
   font-size: 1rem;
