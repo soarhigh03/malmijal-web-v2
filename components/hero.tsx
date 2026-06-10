@@ -11,21 +11,23 @@ export function Hero() {
   return (
     <section className="relative overflow-hidden min-h-[100svh] flex items-center bg-[#f0f0f0]">
       <div className="mx-auto w-full max-w-7xl px-6 sm:px-10 pt-32 pb-16 grid grid-cols-1 lg:grid-cols-[1.15fr_1fr] gap-12 lg:gap-10 items-center">
-        <div className="relative fade-up min-w-0">
+        <div className="relative min-w-0">
           <h1 className="relative font-kopub text-black text-[2.5rem] sm:text-5xl md:text-[3.75rem] lg:text-[3.5rem] xl:text-[4.25rem] leading-[1.18] tracking-tight">
-            <span className="block whitespace-nowrap">말 한마디로 결정되는</span>
-            <span className="block">당신의 가치</span>
+            <span className="block whitespace-nowrap fade-up fade-up-delay-1">
+              말 한마디로 결정되는
+            </span>
+            <span className="block fade-up fade-up-delay-2">당신의 가치</span>
           </h1>
 
-          <div className="mt-10 sm:mt-12 fade-up fade-up-delay-2">
-            <div className="flex items-center gap-5 text-black">
+          <div className="mt-10 sm:mt-12">
+            <div className="flex items-center gap-5 text-black fade-up fade-up-delay-3">
               <p className="text-base sm:text-lg font-medium">
                 그 가치를 함께 만들어가는 서비스
               </p>
               <span aria-hidden className="h-px w-12 sm:w-16 bg-black/70" />
               <p className="font-kopub text-base sm:text-lg">말미잘</p>
             </div>
-            <p className="mt-3 text-xs sm:text-sm text-black/55 tracking-wide">
+            <p className="mt-3 text-xs sm:text-sm text-black/55 tracking-wide fade-up fade-up-delay-4">
               available on App Store
             </p>
           </div>
