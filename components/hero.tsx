@@ -29,6 +29,10 @@ export function Hero() {
             </div>
             <p className="mt-3 text-xs sm:text-sm text-black/55 tracking-wide fade-up fade-up-delay-4">
               available on App Store
+              <span aria-hidden className="mx-2 text-black/30">·</span>
+              <span className="text-black/45">
+                coming soon to Google Play
+              </span>
             </p>
           </div>
         </div>
