@@ -35,6 +35,21 @@ export function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // When the mobile drawer is open: lock page scroll and let Escape close it.
+  useEffect(() => {
+    if (!open) return;
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
+
   // Track which section is currently in view (only on the home page).
   // Uses a scroll-tracked "scan line" 35% from the top of the viewport: the
   // active section is the last one whose top has crossed that line.
@@ -185,8 +200,8 @@ export function Header() {
         <button
           aria-label="Toggle menu"
           aria-expanded={open}
-          className={`md:hidden inline-flex items-center justify-center w-11 h-11 rounded-full text-black transition-[background-color,backdrop-filter,box-shadow,border-color] duration-300 ease-out ${
-            scrolled
+          className={`md:hidden relative z-50 inline-flex items-center justify-center w-11 h-11 rounded-full text-black transition-[background-color,backdrop-filter,box-shadow,border-color] duration-300 ease-out ${
+            scrolled || open
               ? "bg-white/45 backdrop-blur-xl backdrop-saturate-150 border border-white/40 shadow-[0_8px_28px_rgba(0,0,0,0.06)]"
               : "bg-transparent border border-transparent shadow-none"
           }`}
@@ -217,9 +232,30 @@ export function Header() {
         </button>
       </div>
 
-      {open && (
-        <div className="md:hidden bg-[#f0f0f0]/95 backdrop-blur-md">
-          <nav className="mx-auto max-w-7xl px-6 py-4 flex flex-col gap-1">
+      {/* Mobile drawer backdrop */}
+      <div
+        aria-hidden="true"
+        onClick={() => setOpen(false)}
+        className={`md:hidden fixed inset-0 z-30 bg-black/15 transition-opacity duration-300 ease-out ${
+          open ? "opacity-100" : "opacity-0 pointer-events-none"
+        }`}
+      />
+
+      {/* Mobile drawer */}
+      <aside
+        role="dialog"
+        aria-modal="true"
+        aria-label="메뉴"
+        aria-hidden={!open}
+        className={`md:hidden fixed top-0 right-0 z-40 h-[100dvh] w-1/2 min-w-[280px] max-w-[400px]
+          bg-white/55 backdrop-blur-2xl backdrop-saturate-150 border-l border-white/40
+          shadow-[-16px_0_50px_rgba(0,0,0,0.08)]
+          transition-transform duration-[400ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+            open ? "translate-x-0" : "translate-x-full"
+          }`}
+      >
+        <div className="flex flex-col h-full pt-28 px-7 pb-8">
+          <nav className="flex flex-col gap-2">
             {LINKS.map((l) => {
               const active = isActive(l);
               return (
@@ -227,28 +263,29 @@ export function Header() {
                   key={l.label}
                   href={l.href}
                   onClick={(e) => handleNavClick(e, l)}
-                  className={`py-3 font-kopub text-base transition-opacity ${
+                  className={`py-3 font-kopub text-2xl tracking-wider transition-opacity ${
                     active
                       ? "text-black opacity-80"
-                      : "text-black opacity-30"
+                      : "text-black opacity-30 hover:opacity-60"
                   }`}
                 >
                   {l.label}
                 </a>
               );
             })}
-            <a
-              href={APP_STORE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setOpen(false)}
-              className="mt-3 inline-flex items-center justify-center px-4 py-3 rounded-full font-kopub text-base text-white bg-black"
-            >
-              다운로드
-            </a>
           </nav>
+
+          <a
+            href={APP_STORE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setOpen(false)}
+            className="mt-auto inline-flex items-center justify-center w-full px-4 py-3.5 rounded-full font-kopub text-base text-white bg-black hover:bg-black/85 transition-colors"
+          >
+            다운로드
+          </a>
         </div>
-      )}
+      </aside>
     </header>
   );
 }
