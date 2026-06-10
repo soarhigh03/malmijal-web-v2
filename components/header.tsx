@@ -1,31 +1,102 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
-const LINKS = [
-  { label: "HOME", href: "/" },
-  { label: "ABOUT", href: "/#about" },
-  { label: "FAQ", href: "/#faq" },
+type NavLink = {
+  label: string;
+  href: string;
+  sectionId?: string;
+};
+
+const LINKS: NavLink[] = [
+  { label: "HOME", href: "/#home", sectionId: "home" },
+  { label: "ABOUT", href: "/#about", sectionId: "about" },
+  { label: "FAQ", href: "/#faq", sectionId: "faq" },
   { label: "BLOG", href: "/blog" },
 ];
+
+const APP_STORE_URL =
+  "https://apps.apple.com/kr/app/말미잘/id6769989593";
 
 export function Header() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
+  const [activeSection, setActiveSection] = useState<string>("home");
 
-  const isActive = (href: string) => {
-    if (href === "/") return pathname === "/";
-    if (href.startsWith("/#")) return pathname === "/";
-    if (href === "/blog") return pathname.startsWith("/blog");
-    return false;
-  };
+  // Track which section is currently in view (only on the home page).
+  useEffect(() => {
+    if (pathname !== "/") return;
+    const ids = LINKS.map((l) => l.sectionId).filter(
+      (id): id is string => !!id,
+    );
+    const sections = ids
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => !!el);
+    if (sections.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+        if (visible.length > 0) setActiveSection(visible[0].target.id);
+      },
+      { rootMargin: "-25% 0px -55% 0px", threshold: [0, 0.25, 0.5, 0.75, 1] },
+    );
+
+    sections.forEach((s) => observer.observe(s));
+    return () => observer.disconnect();
+  }, [pathname]);
+
+  const isActive = useCallback(
+    (link: NavLink) => {
+      const onBlog = pathname.startsWith("/blog");
+      if (onBlog) return link.href === "/blog";
+      if (link.href === "/blog") return false;
+      return link.sectionId === activeSection;
+    },
+    [pathname, activeSection],
+  );
+
+  const handleNavClick = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>, link: NavLink) => {
+      // External page nav (BLOG) just lets Next.js handle it.
+      if (!link.sectionId) return;
+
+      // On the home page, smooth-scroll to the section ourselves.
+      if (pathname === "/") {
+        e.preventDefault();
+        const el = document.getElementById(link.sectionId);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+          history.replaceState(null, "", `#${link.sectionId}`);
+          setActiveSection(link.sectionId);
+        }
+        setOpen(false);
+        return;
+      }
+
+      // From any other route, let Next route to "/#section".
+      e.preventDefault();
+      router.push(link.href);
+      setOpen(false);
+    },
+    [pathname, router],
+  );
 
   return (
-    <header className="absolute top-0 inset-x-0 z-50">
+    <header className="fixed top-0 inset-x-0 z-50">
       <div className="mx-auto max-w-7xl px-6 sm:px-10 h-24 flex items-center justify-between">
-        <a href="/" className="flex items-center gap-3 shrink-0">
+        <a
+          href="/#home"
+          onClick={(e) =>
+            handleNavClick(e, { label: "HOME", href: "/#home", sectionId: "home" })
+          }
+          className="flex items-center gap-3 shrink-0"
+        >
           <Image
             src="/assets/logo/app-icon.png"
             alt="말미잘"
@@ -39,12 +110,13 @@ export function Header() {
 
         <nav className="hidden md:flex items-center gap-12 lg:gap-16">
           {LINKS.map((l) => {
-            const active = isActive(l.href);
+            const active = isActive(l);
             return (
               <a
                 key={l.label}
                 href={l.href}
-                className={`font-kopub text-base tracking-wider transition-opacity ${
+                onClick={(e) => handleNavClick(e, l)}
+                className={`font-kopub text-base tracking-wider transition-opacity duration-300 ${
                   active
                     ? "text-black opacity-80"
                     : "text-black opacity-20 hover:opacity-50"
@@ -57,7 +129,7 @@ export function Header() {
         </nav>
 
         <a
-          href="https://apps.apple.com/kr/app/말미잘/id6769989593"
+          href={APP_STORE_URL}
           target="_blank"
           rel="noopener noreferrer"
           className="hidden md:inline-flex items-center justify-center px-6 py-3 rounded-full font-kopub text-sm text-white bg-black hover:bg-black/85 transition-colors"
@@ -100,14 +172,16 @@ export function Header() {
         <div className="md:hidden bg-[#f0f0f0]/95 backdrop-blur-md">
           <nav className="mx-auto max-w-7xl px-6 py-4 flex flex-col gap-1">
             {LINKS.map((l) => {
-              const active = isActive(l.href);
+              const active = isActive(l);
               return (
                 <a
                   key={l.label}
                   href={l.href}
-                  onClick={() => setOpen(false)}
-                  className={`py-3 font-kopub text-base ${
-                    active ? "text-black opacity-80" : "text-black opacity-30"
+                  onClick={(e) => handleNavClick(e, l)}
+                  className={`py-3 font-kopub text-base transition-opacity ${
+                    active
+                      ? "text-black opacity-80"
+                      : "text-black opacity-30"
                   }`}
                 >
                   {l.label}
@@ -115,7 +189,7 @@ export function Header() {
               );
             })}
             <a
-              href="https://apps.apple.com/kr/app/말미잘/id6769989593"
+              href={APP_STORE_URL}
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setOpen(false)}

@@ -32,6 +32,14 @@ html, body {
   text-size-adjust: 100%;
 }
 
+html { scroll-behavior: smooth; }
+
+section[id] { scroll-margin-top: 96px; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
 body {
   font-family: var(--font-body);
   color: #000;

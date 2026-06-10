@@ -9,7 +9,7 @@ const MOUTHS = [
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden min-h-[100svh] flex items-center bg-[#f0f0f0]">
+    <section id="home" className="relative overflow-hidden min-h-[100svh] flex items-center bg-[#f0f0f0]">
       <div className="mx-auto w-full max-w-7xl px-6 sm:px-10 pt-32 pb-16 grid grid-cols-1 lg:grid-cols-[1.15fr_1fr] gap-12 lg:gap-10 items-center">
         <div className="relative min-w-0">
           <h1 className="relative font-kopub heading-strong text-black text-[2.125rem] sm:text-[2.5rem] md:text-[3rem] lg:text-[2.875rem] xl:text-[3.5rem] leading-[1.18] tracking-tight">
