@@ -4,6 +4,7 @@ date: 2026-06-02
 author: 최은우
 excerpt: 분석이 실패해도, 네트워크가 끊겨도, 당신의 목소리는 잃지 않습니다. 말미잘이 음성을 다루는 방식.
 tags: [engineering, architecture]
+cover: /blog/covers/capture-first.jpg
 ---
 
 말미잘의 분석 파이프라인은 한 가지 원칙으로 시작했습니다.

@@ -4,6 +4,7 @@ date: 2026-04-08
 author: 최은우
 excerpt: 점수만 보여주는 건 의미가 없습니다. 그 점수를 만든 원시 지표까지 노출하기로 한 이유.
 tags: [analysis, scoring]
+cover: /blog/covers/five-dimensions.jpg
 ---
 
 말미잘이 녹음을 받으면, 백엔드는 5개 차원의 0–100 점수를 돌려줍니다. 단순히 "당신의 말하기 점수는 78점"이 아니라, **왜** 78점인지를 함께 보여줍니다.

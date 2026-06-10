@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
@@ -37,7 +38,7 @@ export default async function PostPage({
   return (
     <>
       <Header />
-      <main className="bg-[#f0f0f0] min-h-screen pb-32 pt-32 sm:pt-40">
+      <main className="bg-canvas min-h-screen pb-32 pt-32 sm:pt-40">
         <article className="mx-auto max-w-3xl px-6 sm:px-10">
           <Link
             href="/blog"
@@ -58,9 +59,22 @@ export default async function PostPage({
             )}
           </div>
 
-          <h1 className="font-kopub text-black text-3xl sm:text-4xl md:text-5xl leading-tight mb-12 sm:mb-14">
+          <h1 className="font-kopub heading-strong text-black text-3xl sm:text-4xl md:text-5xl leading-tight mb-10 sm:mb-12">
             {post.title}
           </h1>
+
+          {post.cover && (
+            <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-black/5 mb-12 sm:mb-14">
+              <Image
+                src={post.cover}
+                alt={post.title}
+                fill
+                priority
+                sizes="(max-width: 768px) 100vw, 768px"
+                className="object-cover"
+              />
+            </div>
+          )}
 
           <div
             className="prose-blog"

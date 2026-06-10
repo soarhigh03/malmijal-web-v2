@@ -4,6 +4,7 @@ date: 2026-05-05
 author: 최은우
 excerpt: 자유 발화, 정확한 발음, 논리적 재구성. 세 가지 다른 축의 훈련을 매일 한 세트씩.
 tags: [drills, design]
+cover: /blog/covers/three-drills.jpg
 ---
 
 말미잘은 매일 세 가지 드릴을 제공합니다. 세 드릴은 일부러 결이 다릅니다. 같은 근육만 훈련하면 균형이 깨지기 때문입니다.

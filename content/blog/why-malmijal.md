@@ -4,6 +4,7 @@ date: 2026-03-12
 author: 최은우
 excerpt: "'말 잘하고 싶다'는 막연한 욕구를, 매일 반복 가능한 1~3분 루틴으로 바꾸는 것. 말미잘의 출발점."
 tags: [philosophy, product]
+cover: /blog/covers/why-malmijal.jpg
 ---
 
 말은 거울로 볼 수 없는 습관입니다.

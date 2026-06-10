@@ -7,7 +7,7 @@ excerpt: 카드와 메타 설명에 노출될 한두 줄짜리 요약문.
 # ── 선택 (optional) ──────────────────────────────────────
 author: 홍길동                          # 작성자 이름
 tags: [product, engineering]           # 자유롭게 — 아직 라우팅엔 안 쓰지만 추후 필터용
-cover: /assets/blog/my-cover.png       # 갤러리 카드/상세 헤더에 쓸 이미지 (없으면 무시)
+cover: /blog/covers/my-post.jpg        # 4:3 비율 권장. 파일은 public/blog/covers/ 에 저장.
 ---
 
 <!--
