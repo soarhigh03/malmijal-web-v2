@@ -185,7 +185,11 @@ export function Header() {
         <button
           aria-label="Toggle menu"
           aria-expanded={open}
-          className="md:hidden inline-flex items-center justify-center w-11 h-11 rounded-lg text-black"
+          className={`md:hidden inline-flex items-center justify-center w-11 h-11 rounded-full text-black transition-[background-color,backdrop-filter,box-shadow,border-color] duration-300 ease-out ${
+            scrolled
+              ? "bg-white/45 backdrop-blur-xl backdrop-saturate-150 border border-white/40 shadow-[0_8px_28px_rgba(0,0,0,0.06)]"
+              : "bg-transparent border border-transparent shadow-none"
+          }`}
           onClick={() => setOpen((v) => !v)}
         >
           <svg
