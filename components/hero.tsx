@@ -12,7 +12,7 @@ export function Hero() {
     <section className="relative overflow-hidden min-h-[100svh] flex items-center bg-[#f0f0f0]">
       <div className="mx-auto w-full max-w-7xl px-6 sm:px-10 pt-32 pb-16 grid grid-cols-1 lg:grid-cols-[1.15fr_1fr] gap-12 lg:gap-10 items-center">
         <div className="relative min-w-0">
-          <h1 className="relative font-kopub text-black text-[2.5rem] sm:text-5xl md:text-[3.75rem] lg:text-[3.5rem] xl:text-[4.25rem] leading-[1.18] tracking-tight">
+          <h1 className="relative font-kopub heading-strong text-black text-[2.125rem] sm:text-[2.5rem] md:text-[3rem] lg:text-[2.875rem] xl:text-[3.5rem] leading-[1.18] tracking-tight">
             <span className="block whitespace-nowrap fade-up fade-up-delay-1">
               말 한마디로 결정되는
             </span>
