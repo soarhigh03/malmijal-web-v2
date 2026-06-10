@@ -263,7 +263,7 @@ export function Header() {
                   key={l.label}
                   href={l.href}
                   onClick={(e) => handleNavClick(e, l)}
-                  className={`py-3 font-kopub text-2xl tracking-wider transition-opacity ${
+                  className={`py-2.5 font-kopub text-base tracking-wider transition-opacity ${
                     active
                       ? "text-black opacity-80"
                       : "text-black opacity-30 hover:opacity-60"
