@@ -25,6 +25,15 @@ export function Header() {
   const pathname = usePathname();
   const router = useRouter();
   const [activeSection, setActiveSection] = useState<string>("home");
+  const [scrolled, setScrolled] = useState(false);
+
+  // Add a frosted-glass pill behind the nav once the page is scrolled past the very top.
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 16);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   // Track which section is currently in view (only on the home page).
   // Uses a scroll-tracked "scan line" 35% from the top of the viewport: the
@@ -121,20 +130,30 @@ export function Header() {
           onClick={(e) =>
             handleNavClick(e, { label: "HOME", href: "/#home", sectionId: "home" })
           }
-          className="flex items-center gap-3 shrink-0"
+          className={`flex items-center gap-2.5 shrink-0 rounded-full transition-[background-color,backdrop-filter,box-shadow,border-color,padding] duration-300 ease-out ${
+            scrolled
+              ? "pl-2 pr-5 py-1.5 bg-white/45 backdrop-blur-xl backdrop-saturate-150 border border-white/40 shadow-[0_8px_28px_rgba(0,0,0,0.06)]"
+              : "px-0 py-0 bg-transparent border border-transparent shadow-none"
+          }`}
         >
           <Image
             src="/assets/logo/app-icon.png"
             alt="말미잘"
-            width={44}
-            height={44}
-            className="rounded-[10px]"
+            width={36}
+            height={36}
+            className="rounded-[9px]"
             priority
           />
-          <span className="font-kopub text-2xl text-black">말미잘</span>
+          <span className="font-kopub text-xl text-black">말미잘</span>
         </a>
 
-        <nav className="hidden md:flex items-center gap-12 lg:gap-16">
+        <nav
+          className={`hidden md:flex items-center gap-10 lg:gap-14 rounded-full transition-[background-color,backdrop-filter,box-shadow,border-color,padding] duration-300 ease-out ${
+            scrolled
+              ? "px-8 py-3 bg-white/45 backdrop-blur-xl backdrop-saturate-150 border border-white/40 shadow-[0_8px_28px_rgba(0,0,0,0.06)]"
+              : "px-0 py-0 bg-transparent border border-transparent shadow-none"
+          }`}
+        >
           {LINKS.map((l) => {
             const active = isActive(l);
             return (
