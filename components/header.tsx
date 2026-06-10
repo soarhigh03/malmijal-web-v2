@@ -27,28 +27,54 @@ export function Header() {
   const [activeSection, setActiveSection] = useState<string>("home");
 
   // Track which section is currently in view (only on the home page).
+  // Uses a scroll-tracked "scan line" 35% from the top of the viewport: the
+  // active section is the last one whose top has crossed that line.
   useEffect(() => {
     if (pathname !== "/") return;
+
     const ids = LINKS.map((l) => l.sectionId).filter(
       (id): id is string => !!id,
     );
-    const sections = ids
-      .map((id) => document.getElementById(id))
-      .filter((el): el is HTMLElement => !!el);
-    if (sections.length === 0) return;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-        if (visible.length > 0) setActiveSection(visible[0].target.id);
-      },
-      { rootMargin: "-25% 0px -55% 0px", threshold: [0, 0.25, 0.5, 0.75, 1] },
-    );
+    const update = () => {
+      const sections = ids
+        .map((id) => document.getElementById(id))
+        .filter((el): el is HTMLElement => !!el);
+      if (sections.length === 0) return;
 
-    sections.forEach((s) => observer.observe(s));
-    return () => observer.disconnect();
+      const scanY = window.innerHeight * 0.35;
+      let current = sections[0].id;
+      for (const s of sections) {
+        if (s.getBoundingClientRect().top <= scanY) current = s.id;
+      }
+
+      // Near the absolute bottom, snap to the last section so the user
+      // always sees the matching tab highlighted on a short final section.
+      const nearBottom =
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 4;
+      if (nearBottom) current = sections[sections.length - 1].id;
+
+      setActiveSection((prev) => (prev === current ? prev : current));
+    };
+
+    let ticking = false;
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        update();
+        ticking = false;
+      });
+    };
+
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
   }, [pathname]);
 
   const isActive = useCallback(
