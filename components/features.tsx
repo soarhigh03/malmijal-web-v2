@@ -29,17 +29,17 @@ const DIMENSIONS = [
 
 export function Features() {
   return (
-    <section id="about" className="bg-cloud-white py-24 sm:py-32">
-      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+    <section id="about" className="bg-[#f0f0f0] py-24 sm:py-32">
+      <div className="mx-auto max-w-7xl px-6 sm:px-10">
         <div className="max-w-2xl mb-16">
-          <p className="font-cursive text-sky-canvas text-3xl sm:text-4xl mb-3">
-            about
+          <p className="font-kopub text-black/40 text-sm tracking-widest mb-4">
+            ABOUT
           </p>
-          <h2 className="font-display text-charcoal-text text-4xl sm:text-5xl leading-tight mb-6">
+          <h2 className="font-kopub text-black text-4xl sm:text-5xl leading-tight mb-6">
             매일 1~3분의<br />
             말하기 훈련 루틴.
           </h2>
-          <p className="text-charcoal-text/80 text-base sm:text-lg leading-relaxed">
+          <p className="text-black/70 text-base sm:text-lg leading-relaxed">
             말은 거울로 볼 수 없는 습관입니다. 짧은 녹음을 정량 지표로 분석해,
             "말 잘하고 싶다"는 막연한 욕구를 매일 반복할 수 있는 훈련으로
             바꿉니다.
@@ -50,42 +50,37 @@ export function Features() {
           {DRILLS.map((d) => (
             <div
               key={d.name}
-              className="bg-haze-grey rounded-xl p-6 flex flex-col gap-3"
+              className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 flex flex-col gap-3 border border-black/5"
             >
               <div className="flex items-center justify-between">
-                <span className="text-xs font-medium text-charcoal-text/60 tracking-wide uppercase">
+                <span className="text-xs font-medium text-black/55 tracking-wide uppercase">
                   {d.short}
                 </span>
-                <span className="text-xs font-medium text-action-blue">
+                <span className="text-xs font-medium text-black/70">
                   {d.duration}
                 </span>
               </div>
-              <h3 className="font-display text-2xl text-charcoal-text">
-                {d.name}
-              </h3>
-              <p className="text-sm text-charcoal-text leading-relaxed">
-                {d.desc}
-              </p>
+              <h3 className="font-kopub text-2xl text-black">{d.name}</h3>
+              <p className="text-sm text-black/75 leading-relaxed">{d.desc}</p>
             </div>
           ))}
         </div>
 
         <div className="border-t border-black/10 pt-16">
-          <p className="font-cursive text-sky-canvas text-2xl sm:text-3xl mb-3">
-            scoring
+          <p className="font-kopub text-black/40 text-sm tracking-widest mb-4">
+            SCORING
           </p>
-          <h3 className="font-display text-charcoal-text text-3xl sm:text-4xl mb-10">
+          <h3 className="font-kopub text-black text-3xl sm:text-4xl mb-10">
             5개 차원으로 분석합니다.
           </h3>
           <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
             {DIMENSIONS.map((d) => (
-              <div key={d.name} className="bg-haze-grey rounded-xl p-5">
-                <p className="text-sm font-medium text-action-blue mb-2">
-                  {d.name}
-                </p>
-                <p className="text-sm font-medium text-charcoal-text leading-snug">
-                  {d.desc}
-                </p>
+              <div
+                key={d.name}
+                className="bg-white/60 backdrop-blur-sm rounded-2xl p-5 border border-black/5"
+              >
+                <p className="font-kopub text-sm text-black mb-2">{d.name}</p>
+                <p className="text-sm text-black/70 leading-snug">{d.desc}</p>
               </div>
             ))}
           </div>

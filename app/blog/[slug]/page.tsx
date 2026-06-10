@@ -37,16 +37,16 @@ export default async function PostPage({
   return (
     <>
       <Header />
-      <main className="bg-[#070b1c] min-h-screen pb-32 pt-24 sm:pt-32">
-        <article className="mx-auto max-w-3xl px-5 sm:px-8">
+      <main className="bg-[#f0f0f0] min-h-screen pb-32 pt-32 sm:pt-40">
+        <article className="mx-auto max-w-3xl px-6 sm:px-10">
           <Link
             href="/blog"
-            className="inline-block text-cloud-white/55 hover:text-cloud-white text-sm mb-10 transition-colors"
+            className="inline-block text-black/55 hover:text-black text-sm mb-10 transition-colors"
           >
             ← Blog
           </Link>
 
-          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] uppercase tracking-widest text-cloud-white/55 mb-6">
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] uppercase tracking-widest text-black/55 mb-6">
             <span>{formatDate(post.date)}</span>
             <span aria-hidden>·</span>
             <span>{post.readingMinutes} min read</span>
@@ -58,12 +58,12 @@ export default async function PostPage({
             )}
           </div>
 
-          <h1 className="text-cloud-white text-3xl sm:text-4xl md:text-5xl font-semibold leading-tight mb-12 sm:mb-14">
+          <h1 className="font-kopub text-black text-3xl sm:text-4xl md:text-5xl leading-tight mb-12 sm:mb-14">
             {post.title}
           </h1>
 
           <div
-            className="prose-blog text-cloud-white/85"
+            className="prose-blog"
             dangerouslySetInnerHTML={{ __html: post.html }}
           />
         </article>
