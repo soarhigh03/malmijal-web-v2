@@ -1,12 +1,17 @@
 import Link from "next/link";
 import Image from "next/image";
+import type { Metadata } from "next";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { getAllPostMeta, formatDate, type PostMeta } from "@/lib/blog";
 
-export const metadata = {
-  title: "Blog — 말미잘",
-  description: "말미잘 팀이 쓰는 글. 제품, 분석, 엔지니어링.",
+export const metadata: Metadata = {
+  title: "말미잘 블로그",
+  description:
+    "면접·발표 말하기, 한국어 스피치 진단, AI 스피치 코치 활용법을 정리한 말미잘 블로그입니다.",
+  alternates: {
+    canonical: "/blog",
+  },
 };
 
 export default function BlogIndexPage() {
