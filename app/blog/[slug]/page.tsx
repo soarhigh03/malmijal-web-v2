@@ -1,10 +1,12 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
+import Script from "next/script";
 import type { Metadata } from "next";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { getPost, getAllPostMeta, formatDate } from "@/lib/blog";
+import { absoluteUrl, siteName } from "@/lib/site";
 
 type Params = { slug: string };
 
@@ -21,8 +23,27 @@ export async function generateMetadata({
   const post = await getPost(slug);
   if (!post) return { title: "Not found — 말미잘" };
   return {
-    title: `${post.title} — 말미잘`,
+    title: post.title,
     description: post.excerpt,
+    alternates: {
+      canonical: `/blog/${post.slug}`,
+    },
+    openGraph: {
+      type: "article",
+      url: `/blog/${post.slug}`,
+      siteName,
+      title: post.title,
+      description: post.excerpt,
+      publishedTime: post.date || undefined,
+      authors: post.author ? [post.author] : undefined,
+      images: post.cover ? [absoluteUrl(post.cover)] : undefined,
+    },
+    twitter: {
+      card: post.cover ? "summary_large_image" : "summary",
+      title: post.title,
+      description: post.excerpt,
+      images: post.cover ? [absoluteUrl(post.cover)] : undefined,
+    },
   };
 }
 
@@ -35,8 +56,28 @@ export default async function PostPage({
   const post = await getPost(slug);
   if (!post) notFound();
 
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt,
+    datePublished: post.date || undefined,
+    dateModified: post.date || undefined,
+    author: post.author
+      ? { "@type": "Person", name: post.author }
+      : { "@type": "Organization", name: siteName },
+    publisher: { "@type": "Organization", name: siteName },
+    mainEntityOfPage: absoluteUrl(`/blog/${post.slug}`),
+    image: post.cover ? [absoluteUrl(post.cover)] : undefined,
+  };
+
   return (
     <>
+      <Script
+        id={`blog-post-jsonld-${post.slug}`}
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
       <Header />
       <main className="bg-canvas min-h-screen pb-32 pt-32 sm:pt-40">
         <article className="mx-auto max-w-3xl px-6 sm:px-10">
