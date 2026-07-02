@@ -1,5 +1,5 @@
 export const siteUrl = (
-  process.env.NEXT_PUBLIC_SITE_URL || "https://malmijal-web-v2.vercel.app"
+  process.env.NEXT_PUBLIC_SITE_URL || "https://malmijal.kr"
 ).replace(/\/$/, "");
 
 export const siteName = "말미잘";
