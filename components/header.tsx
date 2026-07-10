@@ -17,8 +17,7 @@ const LINKS: NavLink[] = [
   { label: "BLOG", href: "/blog" },
 ];
 
-const APP_STORE_URL =
-  "https://apps.apple.com/kr/app/말미잘/id6769989593";
+const DOWNLOAD_URL = "/download";
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -189,9 +188,7 @@ export function Header() {
         </nav>
 
         <a
-          href={APP_STORE_URL}
-          target="_blank"
-          rel="noopener noreferrer"
+          href={DOWNLOAD_URL}
           className="hidden md:inline-flex items-center justify-center px-6 py-3 rounded-full font-kopub text-sm text-white bg-black hover:bg-black/85 transition-colors"
         >
           다운로드
@@ -276,9 +273,7 @@ export function Header() {
           </nav>
 
           <a
-            href={APP_STORE_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+            href={DOWNLOAD_URL}
             onClick={() => setOpen(false)}
             className="mt-auto inline-flex items-center justify-center w-full px-4 py-3.5 rounded-full font-kopub text-base text-white bg-black hover:bg-black/85 transition-colors"
           >

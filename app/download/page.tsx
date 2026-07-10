@@ -1,0 +1,233 @@
+import Image from "next/image";
+import Link from "next/link";
+import type { Metadata } from "next";
+import { QRCodeSVG } from "qrcode.react";
+
+const IOS_URL =
+  "https://apps.apple.com/kr/app/%EB%A7%90%EB%AF%B8%EC%9E%98/id6769989593";
+const ANDROID_URL =
+  "https://play.google.com/store/apps/details?id=com.malmijal.malmijal&hl=ko";
+const RECORDING_SCREENSHOT = "/assets/download/app-recording.png";
+const RESULT_SCREENSHOT = "/assets/download/app-result.png";
+
+const QR_SIZE = 92;
+
+export const metadata: Metadata = {
+  title: "말미잘 다운로드",
+  description:
+    "한국어 말하기를 점수로 확인하고 매일 더 또렷하게 연습하는 AI 스피치 코치, 말미잘을 다운로드하세요.",
+  alternates: {
+    canonical: "/download",
+  },
+};
+
+export default function DownloadPage() {
+  return (
+    <main className="relative min-h-screen overflow-hidden bg-[radial-gradient(circle_at_20%_12%,rgba(255,255,255,0.62)_0,rgba(255,255,255,0)_30%),linear-gradient(155deg,#bddcff_0%,#c7bbff_48%,#d5f8ef_100%)] text-[#18213a]">
+      <Decorations />
+
+      <section className="relative z-10 mx-auto flex min-h-screen w-full max-w-5xl flex-col px-5 py-4 sm:px-8">
+        <div className="flex flex-1 flex-col items-center justify-center pb-4 pt-5 text-center sm:pt-6">
+          <header className="flex justify-center">
+            <Link
+              href="/"
+              aria-label="말미잘 홈으로 이동"
+              className="inline-flex"
+            >
+              <Image
+                src="/assets/logo/mijal_logo_v1.svg"
+                alt="말미잘"
+                width={122}
+                height={36}
+                priority
+                className="h-7 w-auto sm:h-8"
+              />
+            </Link>
+          </header>
+
+          <div className="mb-3 mt-5 inline-flex items-center gap-2 rounded-full bg-white/50 px-4 py-1.5 text-sm font-bold text-indigo-900 shadow-sm backdrop-blur">
+            <span className="h-2 w-2 rounded-full bg-[#7ee2ca]" aria-hidden />
+            한국어 말하기 연습 앱
+          </div>
+
+          <h1 className="font-kopub heading-strong text-[2rem] leading-[1.18] text-[#11182f] sm:text-[2.4rem] md:text-[2.85rem]">
+            말미잘, 한번 써보세요
+          </h1>
+
+          <p className="mt-3 text-base font-semibold leading-7 text-[#35415f]/78 sm:text-lg sm:leading-7">
+            한국어 말하기를 점수로 확인하고,
+            <br />
+            매일 더 또렷하게 연습하세요.
+          </p>
+
+          <div className="mt-5 flex w-full max-w-[400px] flex-col gap-2.5">
+            <DownloadButton
+              href={IOS_URL}
+              label="App Store에서 다운로드"
+              tone="from-[#ffffff] to-[#eef4ff]"
+              iconSrc="/assets/store/apple.png"
+              iconAlt="Apple"
+            />
+            <DownloadButton
+              href={ANDROID_URL}
+              label="Google Play에서 다운로드"
+              tone="from-[#ffffff] to-[#edfff8]"
+              iconSrc="/assets/store/google-play.png"
+              iconAlt="Google Play"
+            />
+          </div>
+
+          <div className="relative mt-5 w-full max-w-[440px] rounded-[1.45rem] border border-white/70 bg-white/46 p-3 shadow-[0_14px_38px_rgba(80,73,160,0.14)] backdrop-blur sm:mt-6">
+            <div className="mb-2 flex items-center justify-center gap-2 text-xs font-bold text-[#4a5573]/78 sm:text-sm">
+              <span aria-hidden className="h-px w-7 bg-[#7f8ab4]/35" />
+              휴대폰으로 스캔해서 받기
+              <span aria-hidden className="h-px w-7 bg-[#7f8ab4]/35" />
+            </div>
+
+            <div className="grid grid-cols-2 gap-2.5 sm:gap-3">
+              <QrCard label="iPhone으로 스캔" value={IOS_URL} />
+              <QrCard label="Android로 스캔" value={ANDROID_URL} />
+            </div>
+          </div>
+        </div>
+
+        <footer className="flex flex-row flex-wrap items-center justify-center gap-2 pb-0 text-xs font-semibold text-[#35415f]/62 sm:gap-4">
+          <span>Privacy</span>
+          <span aria-hidden className="text-[#35415f]/28">·</span>
+          <span>Terms</span>
+          <span aria-hidden className="text-[#35415f]/28">·</span>
+          <span>© 2026 Malmijal</span>
+        </footer>
+      </section>
+    </main>
+  );
+}
+
+function DownloadButton({
+  href,
+  label,
+  tone,
+  iconSrc,
+  iconAlt,
+}: {
+  href: string;
+  label: string;
+  tone: string;
+  iconSrc: string;
+  iconAlt: string;
+}) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+      className={`group flex min-h-[52px] items-center justify-center gap-3 rounded-full border border-white/85 bg-gradient-to-r ${tone} px-5 py-3 text-base font-extrabold text-[#1f2742] shadow-[0_12px_24px_rgba(70,67,154,0.15)] transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-4 focus:ring-white/70 sm:text-[1.05rem]`}
+    >
+      <Image
+        src={iconSrc}
+        alt={iconAlt}
+        width={24}
+        height={24}
+        className="h-6 w-6 object-contain transition-transform group-hover:scale-105"
+      />
+      <span>{label}</span>
+    </a>
+  );
+}
+
+function QrCard({ label, value }: { label: string; value: string }) {
+  return (
+    <article className="rounded-[1.1rem] bg-white/82 p-2.5 text-center shadow-[0_8px_18px_rgba(70,67,154,0.09)] sm:p-3">
+      <p className="mb-1.5 text-xs font-extrabold text-[#293451] sm:text-sm">{label}</p>
+      <div className="mx-auto flex w-fit rounded-xl bg-white p-1.5">
+        <QRCodeSVG
+          value={value}
+          size={QR_SIZE}
+          level="M"
+          includeMargin={false}
+          className="h-[78px] w-[78px] sm:h-[92px] sm:w-[92px]"
+        />
+      </div>
+    </article>
+  );
+}
+
+function Decorations() {
+  return (
+    <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+      <div className="absolute left-[-4rem] top-24 h-36 w-44 rotate-[-18deg] rounded-[48%_52%_56%_44%/44%_58%_42%_56%] bg-[#fff4a8]/55 shadow-[0_20px_70px_rgba(255,244,168,0.22)]" />
+      <div className="absolute right-[-4.5rem] top-28 h-40 w-48 rotate-12 rounded-[58%_42%_45%_55%/48%_42%_58%_52%] bg-[#8cebd8]/48 shadow-[0_20px_70px_rgba(140,235,216,0.22)]" />
+      <div className="absolute bottom-24 left-[-3.5rem] h-44 w-40 rotate-6 rounded-[42%_58%_50%_50%/58%_46%_54%_42%] bg-white/38" />
+      <div className="absolute bottom-20 right-[-3rem] h-36 w-36 rounded-[46%_54%_44%_56%/52%_44%_56%_48%] bg-[#f5b7ff]/42" />
+
+      <ScreenshotFloat
+        src={RECORDING_SCREENSHOT}
+        alt="말미잘 녹음 화면"
+        className="left-[1%] top-[40%] hidden w-40 rotate-[-8deg] sm:block lg:left-[4%] lg:top-[38%] lg:w-48"
+      />
+      <ScreenshotFloat
+        src={RESULT_SCREENSHOT}
+        alt="말미잘 분석 결과 화면"
+        className="right-[1%] top-[22%] hidden w-40 rotate-6 sm:block lg:right-[4%] lg:top-[22%] lg:w-48"
+      />
+
+      <div className="absolute left-[6%] top-[25%] hidden w-36 rotate-[-10deg] rounded-[1.35rem] rounded-bl-md bg-white/42 px-4 py-3 shadow-sm backdrop-blur lg:block">
+        <p className="mb-2 text-xs font-extrabold text-[#35415f]/55">음성 파형</p>
+        <div className="flex h-9 items-center justify-between gap-1.5">
+          {[16, 28, 20, 34, 24, 30, 18, 26].map((height, index) => (
+            <span
+              key={index}
+              className="w-2 rounded-full bg-[#7b6dff]/45"
+              style={{ height }}
+            />
+          ))}
+        </div>
+      </div>
+
+      <div className="absolute -left-28 bottom-4 hidden w-40 rotate-3 rounded-[1.35rem] bg-white/48 px-4 py-3 shadow-sm backdrop-blur lg:block">
+        <p className="mb-2 text-xs font-extrabold text-[#35415f]/55">5축 진단</p>
+        {[
+          ["속도", "72%"],
+          ["유창성", "64%"],
+          ["자신감", "78%"],
+          ["전달력", "70%"],
+          ["구조", "58%"],
+        ].map(([label, width]) => (
+          <div key={label} className="mb-1.5 grid grid-cols-[2.75rem_1fr] items-center gap-2">
+            <span className="text-[11px] font-bold text-[#35415f]/55">{label}</span>
+            <span className="h-1.5 rounded-full bg-white/55">
+              <span
+                className="block h-full rounded-full bg-[#7ee2ca]/70"
+                style={{ width }}
+              />
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function ScreenshotFloat({
+  src,
+  alt,
+  className,
+}: {
+  src: string;
+  alt: string;
+  className: string;
+}) {
+  return (
+    <div
+      className={`absolute overflow-hidden rounded-[1.35rem] border border-white/70 bg-white/42 p-1.5 shadow-[0_18px_42px_rgba(64,70,150,0.16)] backdrop-blur ${className}`}
+    >
+      <Image
+        src={src}
+        alt={alt}
+        width={260}
+        height={520}
+        className="h-auto w-full rounded-[1rem] object-cover opacity-90"
+      />
+    </div>
+  );
+}

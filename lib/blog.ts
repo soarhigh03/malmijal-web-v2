@@ -5,6 +5,8 @@ import { remark } from "remark";
 import remarkHtml from "remark-html";
 
 const POSTS_DIR = path.join(process.cwd(), "content/blog");
+const PUBLIC_DIR = path.join(process.cwd(), "public");
+const COVER_EXTENSIONS = ["png", "jpg", "jpeg", "webp"] as const;
 
 export type PostMeta = {
   slug: string;
@@ -39,6 +41,41 @@ function postFiles(): string[] {
   return fs.readdirSync(POSTS_DIR).filter(isPostFile);
 }
 
+function publicAssetExists(src: string): boolean {
+  const pathname = src.split(/[?#]/)[0].replace(/^\/+/, "");
+  const fullPath = path.resolve(PUBLIC_DIR, pathname);
+  const relativePath = path.relative(PUBLIC_DIR, fullPath);
+
+  if (relativePath.startsWith("..") || path.isAbsolute(relativePath)) {
+    return false;
+  }
+
+  try {
+    return fs.statSync(fullPath).isFile();
+  } catch {
+    return false;
+  }
+}
+
+function resolveSlugCover(slug: string): string | undefined {
+  for (const extension of COVER_EXTENSIONS) {
+    const src = `/blog/covers/${slug}.${extension}`;
+    if (publicAssetExists(src)) return src;
+  }
+
+  return undefined;
+}
+
+function resolveCover(cover: unknown, slug: string): string | undefined {
+  if (typeof cover !== "string") return resolveSlugCover(slug);
+
+  const src = cover.trim();
+  if (!src) return resolveSlugCover(slug);
+  if (/^https?:\/\//i.test(src)) return src;
+
+  return publicAssetExists(src) ? src : resolveSlugCover(slug);
+}
+
 function buildMeta(file: string): { meta: PostMeta; content: string } {
   const slug = file.replace(/\.md$/, "");
   const raw = fs.readFileSync(path.join(POSTS_DIR, file), "utf-8");
@@ -49,7 +86,7 @@ function buildMeta(file: string): { meta: PostMeta; content: string } {
     date: typeof data.date === "string" ? data.date : "",
     excerpt: typeof data.excerpt === "string" ? data.excerpt : "",
     author: typeof data.author === "string" ? data.author : undefined,
-    cover: typeof data.cover === "string" ? data.cover : undefined,
+    cover: resolveCover(data.cover, slug),
     tags: Array.isArray(data.tags) ? data.tags : undefined,
     readingMinutes: readingMinutes(content),
   };
