@@ -27,12 +27,22 @@ export const metadata: Metadata = {
     siteName,
     title,
     description,
+    images: [
+      {
+        url: "/og/og-default.png",
+        width: 1200,
+        height: 630,
+        alt: "말미잘 — 한국어 AI 스피치 코치",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title,
     description,
+    images: ["/og/og-default.png"],
   },
+  itunes: { appId: "6769989593" },
   robots: {
     index: true,
     follow: true,

@@ -21,6 +21,13 @@ export function Footer() {
           <span aria-hidden>·</span>
           <span>© 2026 에토세토라</span>
         </p>
+        <p className="flex flex-wrap items-center gap-x-2 gap-y-1">
+          <a href="https://morning-punch-c8d.notion.site/36ac5a527508805e9a3feb408fff950c" target="_blank" rel="noopener noreferrer" className="font-medium hover:text-black/70 transition-colors">개인정보처리방침</a>
+          <span aria-hidden className="text-black/30">|</span>
+          <a href="https://morning-punch-c8d.notion.site/394c5a52750880a086e3de29aa2a2183" target="_blank" rel="noopener noreferrer" className="hover:text-black/70 transition-colors">이용약관</a>
+          <span aria-hidden className="text-black/30">|</span>
+          <a href="https://morning-punch-c8d.notion.site/36bc5a52750880ba98d5dcc5675ea05a" target="_blank" rel="noopener noreferrer" className="hover:text-black/70 transition-colors">고객지원</a>
+        </p>
       </div>
     </footer>
   );

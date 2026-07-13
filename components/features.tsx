@@ -19,14 +19,6 @@ const DRILLS = [
   },
 ];
 
-const DIMENSIONS = [
-  { name: "Pace", desc: "속도와 일관성" },
-  { name: "Fluency", desc: "유창성" },
-  { name: "Confidence", desc: "자신감·발성 안정성" },
-  { name: "Delivery", desc: "전달력·톤과 리듬" },
-  { name: "Structure", desc: "도입–본론–마무리" },
-];
-
 export function Features() {
   return (
     <section id="about" className="bg-[#f0f0f0] py-24 sm:py-32">
@@ -66,25 +58,6 @@ export function Features() {
           ))}
         </div>
 
-        <div className="border-t border-black/10 pt-16">
-          <p className="font-kopub text-black/40 text-sm tracking-widest mb-4">
-            SCORING
-          </p>
-          <h3 className="font-kopub text-black text-3xl sm:text-4xl mb-10">
-            5개 차원으로 분석합니다.
-          </h3>
-          <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
-            {DIMENSIONS.map((d) => (
-              <div
-                key={d.name}
-                className="bg-white/60 backdrop-blur-sm rounded-2xl p-5 border border-black/5"
-              >
-                <p className="font-kopub text-sm text-black mb-2">{d.name}</p>
-                <p className="text-sm text-black/70 leading-snug">{d.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );
