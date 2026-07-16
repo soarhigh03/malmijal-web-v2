@@ -83,7 +83,12 @@ function buildMeta(file: string): { meta: PostMeta; content: string } {
   const meta: PostMeta = {
     slug,
     title: typeof data.title === "string" ? data.title : slug,
-    date: typeof data.date === "string" ? data.date : "",
+    date:
+      typeof data.date === "string"
+        ? data.date
+        : data.date instanceof Date
+          ? data.date.toISOString()
+          : "",
     excerpt: typeof data.excerpt === "string" ? data.excerpt : "",
     author: typeof data.author === "string" ? data.author : undefined,
     cover: resolveCover(data.cover, slug),
