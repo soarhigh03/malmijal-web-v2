@@ -37,7 +37,7 @@ export function GET() {
 <rss version="2.0">
   <channel>
     <title>말미잘 블로그</title>
-    <link>${SITE_URL}/blog</link>
+    <link>${SITE_URL}</link>
     <description>AI 스피치 코칭 말미잘의 블로그</description>
     <language>ko</language>
 ${items}
