@@ -4,13 +4,38 @@ import type { Metadata } from "next";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { getAllPostMeta, formatDate, type PostMeta } from "@/lib/blog";
+import { siteName } from "@/lib/site";
+
+const title = "말미잘 블로그";
+const description =
+  "면접·발표 말하기, 한국어 스피치 진단, AI 스피치 코치 활용법을 정리한 말미잘 블로그입니다.";
 
 export const metadata: Metadata = {
-  title: "말미잘 블로그",
-  description:
-    "면접·발표 말하기, 한국어 스피치 진단, AI 스피치 코치 활용법을 정리한 말미잘 블로그입니다.",
+  title,
+  description,
   alternates: {
     canonical: "/blog",
+  },
+  openGraph: {
+    type: "website",
+    url: "/blog",
+    siteName,
+    title,
+    description,
+    images: [
+      {
+        url: "/og/og-default.png",
+        width: 1200,
+        height: 630,
+        alt: "말미잘 — 한국어 AI 스피치 코치",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    images: ["/og/og-default.png"],
   },
 };
 

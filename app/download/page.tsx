@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { QRCodeSVG } from "qrcode.react";
+import { siteName } from "@/lib/site";
 
 const IOS_URL =
   "https://apps.apple.com/kr/app/%EB%A7%90%EB%AF%B8%EC%9E%98/id6769989593";
@@ -11,13 +12,36 @@ const RECORDING_SCREENSHOT = "/assets/download/app-recording.png";
 const RESULT_SCREENSHOT = "/assets/download/app-result.png";
 
 const QR_SIZE = 92;
+const title = "말미잘 다운로드";
+const description =
+  "한국어 말하기를 점수로 확인하고 매일 더 또렷하게 연습하는 AI 스피치 코치, 말미잘을 다운로드하세요.";
 
 export const metadata: Metadata = {
-  title: "말미잘 다운로드",
-  description:
-    "한국어 말하기를 점수로 확인하고 매일 더 또렷하게 연습하는 AI 스피치 코치, 말미잘을 다운로드하세요.",
+  title,
+  description,
   alternates: {
     canonical: "/download",
+  },
+  openGraph: {
+    type: "website",
+    url: "/download",
+    siteName,
+    title,
+    description,
+    images: [
+      {
+        url: "/og/og-default.png",
+        width: 1200,
+        height: 630,
+        alt: "말미잘 — 한국어 AI 스피치 코치",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    images: ["/og/og-default.png"],
   },
 };
 

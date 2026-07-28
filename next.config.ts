@@ -1,5 +1,11 @@
 import type { NextConfig } from "next";
 
+const CANONICAL_ORIGIN = "https://malmijal.kr";
+const DUPLICATE_HOSTS = [
+  "www\\.malmijal\\.kr",
+  "malmijal-web-v2\\.vercel\\.app",
+] as const;
+
 const ARCHIVED_REDIRECTS: { from: string; to: string }[] = [
   // → /blog/one-minute-self-introduction
   ...([
@@ -48,11 +54,19 @@ const ARCHIVED_REDIRECTS: { from: string; to: string }[] = [
 
 const nextConfig: NextConfig = {
   async redirects() {
-    return ARCHIVED_REDIRECTS.map(({ from, to }) => ({
-      source: `/blog/${from}`,
-      destination: to,
-      permanent: true,
-    }));
+    return [
+      ...DUPLICATE_HOSTS.map((host) => ({
+        source: "/:path*",
+        has: [{ type: "host" as const, value: host }],
+        destination: `${CANONICAL_ORIGIN}/:path*`,
+        permanent: true,
+      })),
+      ...ARCHIVED_REDIRECTS.map(({ from, to }) => ({
+        source: `/blog/${from}`,
+        destination: to,
+        permanent: true,
+      })),
+    ];
   },
 };
 
