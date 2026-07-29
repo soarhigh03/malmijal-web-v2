@@ -192,6 +192,26 @@ body {
   border-top: 1px solid rgba(0,0,0,0.1);
   margin: 2.5rem 0;
 }
+.prose-blog .table-wrap {
+  overflow-x: auto;
+  margin: 0 0 1.25rem;
+}
+.prose-blog table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.94rem;
+  line-height: 1.65;
+}
+.prose-blog th {
+  text-align: left;
+  font-weight: 600;
+  padding: 0.5em 0.75em;
+  border-bottom: 2px solid rgba(0,0,0,0.15);
+}
+.prose-blog td {
+  padding: 0.5em 0.75em;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
 
 @media (prefers-reduced-motion: reduce) {
   .fade-up,

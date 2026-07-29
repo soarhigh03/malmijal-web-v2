@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { remark } from "remark";
+import remarkGfm from "remark-gfm";
 import remarkHtml from "remark-html";
 
 const POSTS_DIR = path.join(process.cwd(), "content/blog");
@@ -110,7 +111,13 @@ export async function getPost(slug: string): Promise<Post | null> {
   const full = path.join(POSTS_DIR, file);
   if (!fs.existsSync(full)) return null;
   const { meta, content } = buildMeta(file);
-  const html = String(await remark().use(remarkHtml).process(content));
+  const raw_html = String(
+    await remark().use(remarkGfm).use(remarkHtml).process(content),
+  );
+  const html = raw_html.replace(
+    /<table>/g,
+    '<div class="table-wrap"><table>',
+  ).replace(/<\/table>/g, "</table></div>");
   return { ...meta, html };
 }
 
