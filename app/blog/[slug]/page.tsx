@@ -101,7 +101,7 @@ export default async function PostPage({
             )}
           </div>
 
-          <h1 className="font-kopub text-black text-3xl sm:text-4xl md:text-5xl font-bold leading-[1.15] tracking-[-0.035em] mb-10 sm:mb-12">
+          <h1 className="font-kopub text-black text-3xl sm:text-4xl md:text-5xl font-bold leading-[1.15] tracking-[-0.035em] mb-10 sm:mb-12 whitespace-pre-line">
             {post.title}
           </h1>
 

@@ -128,10 +128,10 @@ function FeaturedCard({ post }: { post: PostMeta }) {
           <span className="inline-flex w-fit items-center px-3 py-1 rounded-md bg-black/5 text-black/70 text-xs font-medium tracking-wide mb-5">
             Featured
           </span>
-          <h2 className="font-kopub heading-strong text-black text-2xl sm:text-3xl md:text-4xl leading-tight mb-5">
+          <h2 className="font-kopub heading-strong text-black text-2xl sm:text-3xl md:text-4xl leading-tight mb-5 whitespace-pre-line">
             {post.title}
           </h2>
-          <p className="text-black/70 text-base sm:text-lg leading-relaxed mb-8 max-w-xl">
+          <p className="text-black/70 text-base sm:text-lg leading-relaxed mb-8 max-w-xl whitespace-pre-line">
             {post.excerpt}
           </p>
           <div className="flex items-center gap-3 text-black/55 text-xs uppercase tracking-widest mb-8">
@@ -168,10 +168,10 @@ function GalleryCard({ post }: { post: PostMeta }) {
         <span className="inline-flex w-fit items-center px-2.5 py-0.5 rounded-md bg-black/5 text-black/70 text-[11px] font-medium tracking-wide mb-3">
           News
         </span>
-        <h3 className="font-kopub heading-strong text-black text-lg sm:text-xl leading-snug mb-2 group-hover:text-black/80 transition-colors">
+        <h3 className="font-kopub heading-strong text-black text-lg sm:text-xl leading-snug mb-2 group-hover:text-black/80 transition-colors whitespace-pre-line">
           {post.title}
         </h3>
-        <p className="text-black/65 text-sm leading-relaxed mb-4 line-clamp-3">
+        <p className="text-black/65 text-sm leading-relaxed mb-4 line-clamp-3 whitespace-pre-line">
           {post.excerpt}
         </p>
         <div className="mt-auto flex items-center gap-2 text-black/45 text-[11px] uppercase tracking-widest">
