@@ -3,6 +3,10 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { QRCodeSVG } from "qrcode.react";
 import { siteName } from "@/lib/site";
+import {
+  AndroidDownloadButton,
+  AndroidQrCard,
+} from "./android-notice";
 
 const IOS_URL =
   "https://apps.apple.com/kr/app/%EB%A7%90%EB%AF%B8%EC%9E%98/id6769989593";
@@ -92,8 +96,7 @@ export default function DownloadPage() {
               iconSrc="/assets/store/apple.png"
               iconAlt="Apple"
             />
-            <DownloadButton
-              href={ANDROID_URL}
+            <AndroidDownloadButton
               label="Google Play에서 다운로드"
               tone="from-[#ffffff] to-[#edfff8]"
               iconSrc="/assets/store/google-play.png"
@@ -110,7 +113,7 @@ export default function DownloadPage() {
 
             <div className="grid grid-cols-2 gap-2.5 sm:gap-3">
               <QrCard label="iPhone으로 스캔" value={IOS_URL} />
-              <QrCard label="Android로 스캔" value={ANDROID_URL} />
+              <AndroidQrCard label="Android로 스캔" />
             </div>
           </div>
         </div>
