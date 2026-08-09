@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
+import { trackEvent } from "./analytics";
 
 export function AndroidDownloadButton({
   label,
@@ -31,7 +32,10 @@ export function AndroidDownloadButton({
     <>
       <button
         type="button"
-        onClick={() => setOpen(true)}
+        onClick={() => {
+          trackEvent("store_button_click", { store: "android_notice" });
+          setOpen(true);
+        }}
         className={`group flex min-h-[52px] w-full items-center justify-center gap-3 rounded-full border border-white/85 bg-gradient-to-r ${tone} px-5 py-3 text-base font-extrabold text-[#1f2742] shadow-[0_12px_24px_rgba(70,67,154,0.15)] transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-4 focus:ring-white/70 sm:text-[1.05rem]`}
       >
         <Image

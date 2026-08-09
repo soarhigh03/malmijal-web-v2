@@ -7,6 +7,7 @@ import {
   AndroidDownloadButton,
   AndroidQrCard,
 } from "./android-notice";
+import { GaScript, IosDownloadButton } from "./analytics";
 
 const IOS_URL =
   "https://apps.apple.com/kr/app/%EB%A7%90%EB%AF%B8%EC%9E%98/id6769989593";
@@ -57,6 +58,7 @@ export const metadata: Metadata = {
 export default function DownloadPage() {
   return (
     <main className="relative min-h-screen overflow-hidden bg-[radial-gradient(circle_at_20%_12%,rgba(255,255,255,0.62)_0,rgba(255,255,255,0)_30%),linear-gradient(155deg,#bddcff_0%,#c7bbff_48%,#d5f8ef_100%)] text-[#18213a]">
+      <GaScript />
       <Decorations />
 
       <section className="relative z-10 mx-auto flex min-h-screen w-full max-w-5xl flex-col px-5 py-4 sm:px-8">
@@ -94,7 +96,7 @@ export default function DownloadPage() {
           </p>
 
           <div className="mt-5 flex w-full max-w-[400px] flex-col gap-2.5">
-            <DownloadButton
+            <IosDownloadButton
               href={IOS_URL}
               label="App Store에서 다운로드"
               tone="from-[#ffffff] to-[#eef4ff]"
@@ -134,38 +136,6 @@ export default function DownloadPage() {
         </footer>
       </section>
     </main>
-  );
-}
-
-function DownloadButton({
-  href,
-  label,
-  tone,
-  iconSrc,
-  iconAlt,
-}: {
-  href: string;
-  label: string;
-  tone: string;
-  iconSrc: string;
-  iconAlt: string;
-}) {
-  return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noreferrer"
-      className={`group flex min-h-[52px] items-center justify-center gap-3 rounded-full border border-white/85 bg-gradient-to-r ${tone} px-5 py-3 text-base font-extrabold text-[#1f2742] shadow-[0_12px_24px_rgba(70,67,154,0.15)] transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-4 focus:ring-white/70 sm:text-[1.05rem]`}
-    >
-      <Image
-        src={iconSrc}
-        alt={iconAlt}
-        width={24}
-        height={24}
-        className="h-6 w-6 object-contain transition-transform group-hover:scale-105"
-      />
-      <span>{label}</span>
-    </a>
   );
 }
 
