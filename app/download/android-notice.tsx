@@ -53,7 +53,7 @@ export function AndroidDownloadButton({
         >
           <div className="mx-4 w-full max-w-sm rounded-2xl bg-white px-6 py-7 text-center shadow-xl">
             <p className="text-lg font-extrabold text-[#1f2742]">
-              Android 버전은 대규모 업데이트 준비 중입니다.
+              Android 버전은 업데이트 준비 중입니다.
               <br />
               잠시만 기다려 주세요!
             </p>
@@ -82,7 +82,7 @@ export function AndroidQrCard({ label }: { label: string }) {
       </p>
       <div className="mx-auto flex min-h-[90px] w-fit items-center justify-center rounded-xl bg-white/60 px-4 py-3 sm:min-h-[104px]">
         <p className="text-sm font-bold leading-relaxed text-[#35415f]/70">
-          대규모 업데이트
+          업데이트
           <br />
           준비 중
         </p>
