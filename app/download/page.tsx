@@ -17,6 +17,41 @@ const RECORDING_SCREENSHOT = "/assets/download/app-recording.png";
 const RESULT_SCREENSHOT = "/assets/download/app-result.png";
 
 const QR_SIZE = 92;
+
+const PALETTE: "warmGray" | "reskinBlue" | "neutralWhite" = "reskinBlue";
+
+const PALETTES = {
+  warmGray: {
+    pageBackground:
+      "radial-gradient(circle at 20% 12%, rgba(255,255,255,0.7), transparent 55%), #F0F0EE",
+    blob1: "#FBD8D0",
+    blob2: "#EFE3D6",
+    blob3: "#E3E4E0",
+    accent: "#F1705C",
+    accentSoft: "#FDEAE6",
+  },
+  reskinBlue: {
+    pageBackground:
+      "linear-gradient(165deg, #EAF4FB 0%, #F7FBFD 100%)",
+    blob1: "#D6EEF2",
+    blob2: "#DCE9F7",
+    blob3: "#FBD8D0",
+    accent: "#F1705C",
+    accentSoft: "#FDEAE6",
+  },
+  neutralWhite: {
+    pageBackground:
+      "radial-gradient(circle at 20% 12%, rgba(241,112,92,0.05), transparent 50%), #FBFBFA",
+    blob1: "#FBD8D0",
+    blob2: "#EDEDEA",
+    blob3: "#F6E9E6",
+    accent: "#F1705C",
+    accentSoft: "#FDEAE6",
+  },
+} as const;
+
+const palette = PALETTES[PALETTE];
+
 const title = "말미잘 다운로드";
 const description =
   "한국어 말하기를 점수로 확인하고 매일 더 또렷하게 연습하는 AI 스피치 코치, 말미잘을 다운로드하세요.";
@@ -57,7 +92,7 @@ export const metadata: Metadata = {
 
 export default function DownloadPage() {
   return (
-    <main className="relative min-h-screen overflow-hidden bg-[radial-gradient(circle_at_20%_12%,rgba(255,255,255,0.62)_0,rgba(255,255,255,0)_30%),linear-gradient(155deg,#bddcff_0%,#c7bbff_48%,#d5f8ef_100%)] text-[#18213a]">
+    <main className="relative min-h-screen overflow-hidden text-[#18213a]" style={{ background: palette.pageBackground }}>
       <GaScript />
       <Decorations />
 
@@ -80,8 +115,8 @@ export default function DownloadPage() {
             </Link>
           </header>
 
-          <div className="mb-3 mt-5 inline-flex items-center gap-2 rounded-full bg-white/50 px-4 py-1.5 text-sm font-bold text-indigo-900 shadow-sm backdrop-blur">
-            <span className="h-2 w-2 rounded-full bg-[#7ee2ca]" aria-hidden />
+          <div className="mb-3 mt-5 inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-sm font-bold text-indigo-900 shadow-sm backdrop-blur" style={{ backgroundColor: palette.accentSoft }}>
+            <span className="h-2 w-2 rounded-full" aria-hidden style={{ backgroundColor: palette.accent }} />
             한국어 말하기 연습 앱
           </div>
 
@@ -108,6 +143,7 @@ export default function DownloadPage() {
               tone="from-[#ffffff] to-[#edfff8]"
               iconSrc="/assets/store/google-play.png"
               iconAlt="Google Play"
+              accent={palette.accent}
             />
           </div>
 
@@ -159,10 +195,10 @@ function QrCard({ label, value }: { label: string; value: string }) {
 function Decorations() {
   return (
     <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
-      <div className="absolute left-[-4rem] top-24 h-36 w-44 rotate-[-18deg] rounded-[48%_52%_56%_44%/44%_58%_42%_56%] bg-[#fff4a8]/55 shadow-[0_20px_70px_rgba(255,244,168,0.22)]" />
-      <div className="absolute right-[-4.5rem] top-28 h-40 w-48 rotate-12 rounded-[58%_42%_45%_55%/48%_42%_58%_52%] bg-[#8cebd8]/48 shadow-[0_20px_70px_rgba(140,235,216,0.22)]" />
+      <div className="absolute left-[-4rem] top-24 h-36 w-44 rotate-[-18deg] rounded-[48%_52%_56%_44%/44%_58%_42%_56%]" style={{ backgroundColor: `${palette.blob1}8c`, boxShadow: `0 20px 70px ${palette.blob1}38` }} />
+      <div className="absolute right-[-4.5rem] top-28 h-40 w-48 rotate-12 rounded-[58%_42%_45%_55%/48%_42%_58%_52%]" style={{ backgroundColor: `${palette.blob2}7a`, boxShadow: `0 20px 70px ${palette.blob2}38` }} />
       <div className="absolute bottom-24 left-[-3.5rem] h-44 w-40 rotate-6 rounded-[42%_58%_50%_50%/58%_46%_54%_42%] bg-white/38" />
-      <div className="absolute bottom-20 right-[-3rem] h-36 w-36 rounded-[46%_54%_44%_56%/52%_44%_56%_48%] bg-[#f5b7ff]/42" />
+      <div className="absolute bottom-20 right-[-3rem] h-36 w-36 rounded-[46%_54%_44%_56%/52%_44%_56%_48%]" style={{ backgroundColor: `${palette.blob3}6b` }} />
 
       <ScreenshotFloat
         src={RECORDING_SCREENSHOT}

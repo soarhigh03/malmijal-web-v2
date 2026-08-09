@@ -9,11 +9,13 @@ export function AndroidDownloadButton({
   tone,
   iconSrc,
   iconAlt,
+  accent = "#F1705C",
 }: {
   label: string;
   tone: string;
   iconSrc: string;
   iconAlt: string;
+  accent?: string;
 }) {
   const [open, setOpen] = useState(false);
 
@@ -67,7 +69,8 @@ export function AndroidDownloadButton({
             <button
               type="button"
               onClick={close}
-              className="mt-5 rounded-full bg-[#7b6dff] px-8 py-2.5 text-sm font-extrabold text-white shadow-md transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-4 focus:ring-[#7b6dff]/40"
+              className="mt-5 rounded-full px-8 py-2.5 text-sm font-extrabold text-white shadow-md transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-4"
+              style={{ backgroundColor: accent, "--tw-ring-color": `${accent}66` } as React.CSSProperties}
             >
               확인
             </button>
