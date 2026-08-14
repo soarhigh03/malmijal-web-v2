@@ -63,7 +63,6 @@ export default async function PostPage({
     headline: post.title,
     description: post.excerpt,
     datePublished: post.date || undefined,
-    dateModified: post.date || undefined,
     author: post.author
       ? { "@type": "Person", name: post.author }
       : { "@type": "Organization", name: siteName },
@@ -80,7 +79,7 @@ export default async function PostPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
       />
       <Header />
-      <main className="bg-canvas min-h-screen pb-32 pt-32 sm:pt-40">
+      <main className="bg-white min-h-screen pb-32 pt-32 sm:pt-40">
         <article className="mx-auto max-w-3xl px-6 sm:px-10">
           <Link
             href="/blog"

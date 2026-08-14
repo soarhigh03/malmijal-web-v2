@@ -1,6 +1,5 @@
 import { getAllPostMeta } from "@/lib/blog";
-
-const SITE_URL = "https://malmijal.kr";
+import { siteUrl } from "@/lib/site";
 
 function escapeXml(s: string): string {
   return s
@@ -22,7 +21,7 @@ export function GET() {
 
   const items = posts
     .map((post) => {
-      const link = `${SITE_URL}/blog/${post.slug}`;
+      const link = `${siteUrl}/blog/${post.slug}`;
       return `    <item>
       <title>${escapeXml(post.title)}</title>
       <link>${link}</link>
@@ -37,7 +36,7 @@ export function GET() {
 <rss version="2.0">
   <channel>
     <title>말미잘 블로그</title>
-    <link>${SITE_URL}</link>
+    <link>${siteUrl}</link>
     <description>AI 스피치 코칭 말미잘의 블로그</description>
     <language>ko</language>
 ${items}

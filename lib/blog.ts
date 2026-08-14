@@ -17,6 +17,7 @@ export type PostMeta = {
   author?: string;
   cover?: string;
   tags?: string[];
+  featured?: boolean;
   readingMinutes: number;
 };
 
@@ -94,6 +95,7 @@ function buildMeta(file: string): { meta: PostMeta; content: string } {
     author: typeof data.author === "string" ? data.author : undefined,
     cover: resolveCover(data.cover, slug),
     tags: Array.isArray(data.tags) ? data.tags : undefined,
+    featured: data.featured === true ? true : undefined,
     readingMinutes: readingMinutes(content),
   };
   return { meta, content };

@@ -41,12 +41,30 @@ export const metadata: Metadata = {
 
 export default function BlogIndexPage() {
   const posts = getAllPostMeta();
-  const [featured, ...rest] = posts;
+
+  const explicitlyFeatured = posts.filter((p) => p.featured);
+  if (process.env.NODE_ENV === "development" && explicitlyFeatured.length > 1) {
+    console.warn(
+      `[blog] ${explicitlyFeatured.length} posts have featured: true (${explicitlyFeatured.map((p) => p.slug).join(", ")}). Using the newest by date.`,
+    );
+  }
+
+  let featured: typeof posts[number];
+  let rest: typeof posts;
+
+  if (explicitlyFeatured.length >= 1) {
+    featured = explicitlyFeatured.sort((a, b) =>
+      a.date < b.date ? 1 : -1,
+    )[0];
+    rest = posts.filter((p) => p.slug !== featured.slug);
+  } else {
+    [featured, ...rest] = posts;
+  }
 
   return (
     <>
       <Header />
-      <main className="bg-canvas min-h-screen pb-32 pt-32 sm:pt-40">
+      <main className="bg-white min-h-screen pb-32 pt-32 sm:pt-40">
         <div className="mx-auto max-w-7xl px-6 sm:px-10">
           <div className="flex items-center gap-2 mb-4">
             <span aria-hidden className="w-1.5 h-1.5 rounded-full bg-black" />

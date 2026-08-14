@@ -9,6 +9,7 @@ excerpt: |-
 author: 박병호
 tags: [product, methodology]
 cover: /blog/covers/malmijal-index-methodology.jpg
+featured: true
 ---
 
 말하기 앱이 내 목소리를 듣고 점수를 매긴다고 하면, 당연히 이런 생각이 들어요. 
