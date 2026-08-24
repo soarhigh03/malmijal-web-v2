@@ -17,7 +17,6 @@ const ARCHIVED_REDIRECTS: { from: string; to: string }[] = [
     "interview-speaking-tangled",
     "interview-study-feedback-limits",
     "interview-stutter-recovery",
-    "interview-top-down-answer-examples",
     "unexpected-interview-question",
     "one-minute-self-introduction-speech-5-steps",
   ].map((s) => ({ from: s, to: "/blog/one-minute-self-introduction" }))),
@@ -42,14 +41,9 @@ const ARCHIVED_REDIRECTS: { from: string; to: string }[] = [
     "speak-well-7-habits",
     "speaking-recording-practice",
   ].map((s) => ({ from: s, to: "/blog/how-to-practice-speaking-alone" }))),
-  // → /blog (index fallback)
-  ...([
-    "ai-interview-prep-app",
-    "ai-speech-coach-meaning",
-    "speech-app-selection",
-    "speech-pattern-not-score",
-    "speech-school-alternative-checklist",
-  ].map((s) => ({ from: s, to: "/blog" }))),
+  // re-pointed individual redirects
+  { from: "ai-interview-prep-app", to: "/blog/speech-app-selection" },
+  { from: "speech-pattern-not-score", to: "/blog/malmijal-index-methodology" },
 ];
 
 const nextConfig: NextConfig = {
