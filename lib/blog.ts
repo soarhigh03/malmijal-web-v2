@@ -9,6 +9,11 @@ const POSTS_DIR = path.join(process.cwd(), "content/blog");
 const PUBLIC_DIR = path.join(process.cwd(), "public");
 const COVER_EXTENSIONS = ["png", "jpg", "jpeg", "webp"] as const;
 
+export type BlogFaqItem = {
+  question: string;
+  answer: string;
+};
+
 export type PostMeta = {
   slug: string;
   title: string;
@@ -18,11 +23,13 @@ export type PostMeta = {
   cover?: string;
   tags?: string[];
   featured?: boolean;
+  schema?: boolean;
   readingMinutes: number;
 };
 
 export type Post = PostMeta & {
   html: string;
+  faqItems: BlogFaqItem[];
 };
 
 function readingMinutes(text: string): number {
@@ -96,6 +103,7 @@ function buildMeta(file: string): { meta: PostMeta; content: string } {
     cover: resolveCover(data.cover, slug),
     tags: Array.isArray(data.tags) ? data.tags : undefined,
     featured: data.featured === true ? true : undefined,
+    schema: data.schema === false ? false : undefined,
     readingMinutes: readingMinutes(content),
   };
   return { meta, content };
@@ -105,6 +113,49 @@ export function getAllPostMeta(): PostMeta[] {
   return postFiles()
     .map((f) => buildMeta(f).meta)
     .sort((a, b) => (a.date < b.date ? 1 : -1));
+}
+
+function stripMarkdown(md: string): string {
+  return md
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1") // [text](url) → text
+    .replace(/[*_~`]+/g, "")                  // bold/italic/strike/code
+    .replace(/^>\s?/gm, "")                   // blockquotes
+    .replace(/^[-*+]\s/gm, "")                // unordered list markers
+    .replace(/^\d+\.\s/gm, "")                // ordered list markers
+    .replace(/\n{2,}/g, " ")                  // collapse paragraphs
+    .replace(/\n/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function parseFaqItems(content: string): BlogFaqItem[] {
+  // Find the FAQ section (## 자주 묻는 질문)
+  const faqMatch = content.match(/^##\s+자주 묻는 질문.*$/m);
+  if (!faqMatch || faqMatch.index === undefined) return [];
+
+  const faqSection = content.slice(faqMatch.index + faqMatch[0].length);
+
+  // Stop at the next ## heading (if any other section follows)
+  const nextH2 = faqSection.match(/^##\s+/m);
+  const faqBody = nextH2 && nextH2.index !== undefined
+    ? faqSection.slice(0, nextH2.index)
+    : faqSection;
+
+  // Split on ### headings
+  const parts = faqBody.split(/^###\s+/m);
+  const items: BlogFaqItem[] = [];
+
+  for (let i = 1; i < parts.length; i++) {
+    const part = parts[i];
+    const newlineIdx = part.indexOf("\n");
+    const question =
+      newlineIdx === -1 ? part.trim() : part.slice(0, newlineIdx).trim();
+    const body = newlineIdx === -1 ? "" : part.slice(newlineIdx + 1).trim();
+    if (!question) continue;
+    items.push({ question, answer: stripMarkdown(body) });
+  }
+
+  return items;
 }
 
 export async function getPost(slug: string): Promise<Post | null> {
@@ -120,7 +171,8 @@ export async function getPost(slug: string): Promise<Post | null> {
     /<table>/g,
     '<div class="table-wrap"><table>',
   ).replace(/<\/table>/g, "</table></div>");
-  return { ...meta, html };
+  const faqItems = parseFaqItems(content);
+  return { ...meta, html, faqItems };
 }
 
 export function formatDate(iso: string): string {

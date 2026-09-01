@@ -57,27 +57,63 @@ export default async function PostPage({
   const post = await getPost(slug);
   if (!post) notFound();
 
-  const articleJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    headline: post.title,
-    description: post.excerpt,
-    datePublished: post.date || undefined,
-    author: post.author
-      ? { "@type": "Person", name: post.author }
-      : { "@type": "Organization", name: siteName },
-    publisher: { "@type": "Organization", name: siteName },
-    mainEntityOfPage: absoluteUrl(`/blog/${post.slug}`),
-    image: post.cover ? [absoluteUrl(post.cover)] : undefined,
-  };
+  const showSchema = post.schema !== false;
+
+  const articleJsonLd = showSchema
+    ? {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        headline: post.title,
+        description: post.excerpt,
+        datePublished: post.date || undefined,
+        author: post.author
+          ? { "@type": "Person", name: post.author }
+          : { "@type": "Organization", name: siteName },
+        publisher: {
+          "@type": "Organization",
+          name: siteName,
+          logo: {
+            "@type": "ImageObject",
+            url: absoluteUrl("/assets/logo/app-icon.png"),
+          },
+        },
+        mainEntityOfPage: absoluteUrl(`/blog/${post.slug}`),
+        image: post.cover ? [absoluteUrl(post.cover)] : undefined,
+      }
+    : null;
+
+  const faqJsonLd =
+    showSchema && post.faqItems.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: post.faqItems.map((item) => ({
+            "@type": "Question",
+            name: item.question,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: item.answer,
+            },
+          })),
+        }
+      : null;
 
   return (
     <>
-      <Script
-        id={`blog-post-jsonld-${post.slug}`}
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
-      />
+      {articleJsonLd && (
+        <Script
+          id={`blog-post-jsonld-${post.slug}`}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+        />
+      )}
+      {faqJsonLd && (
+        <Script
+          id={`blog-faq-jsonld-${post.slug}`}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+      )}
       <Header />
       <main className="bg-white min-h-screen pb-32 pt-32 sm:pt-40">
         <article className="mx-auto max-w-3xl px-6 sm:px-10">
