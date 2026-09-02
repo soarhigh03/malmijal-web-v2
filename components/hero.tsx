@@ -9,8 +9,8 @@ const MOUTHS = [
 
 export function Hero() {
   return (
-    <section id="home" className="relative overflow-hidden min-h-[100svh] flex items-center bg-[#f0f0f0]">
-      <div className="mx-auto w-full max-w-7xl px-6 sm:px-10 pt-32 pb-16 grid grid-cols-1 lg:grid-cols-[1.15fr_1fr] gap-12 lg:gap-10 items-center">
+    <section id="home" className="relative overflow-hidden min-h-0 lg:min-h-[100svh] flex items-start lg:items-center bg-[#f0f0f0]">
+      <div className="mx-auto w-full max-w-7xl px-6 sm:px-10 pt-24 pb-10 lg:pt-32 lg:pb-16 grid grid-cols-1 lg:grid-cols-[1.15fr_1fr] gap-6 lg:gap-8 items-center">
         <div className="relative min-w-0">
           <h1 className="relative font-kopub heading-strong text-black text-[2.125rem] sm:text-[2.5rem] md:text-[3rem] lg:text-[2.875rem] xl:text-[3.5rem] leading-[1.18] tracking-tight">
             <span className="block whitespace-nowrap fade-up fade-up-delay-1">
@@ -19,7 +19,7 @@ export function Hero() {
             <span className="block fade-up fade-up-delay-2">당신의 가치</span>
           </h1>
 
-          <div className="mt-10 sm:mt-12">
+          <div className="mt-5 sm:mt-6">
             <div className="flex items-center gap-5 text-black fade-up fade-up-delay-3">
               <p className="text-base sm:text-lg font-medium">
                 그 가치를 함께 만들어가는 서비스
@@ -27,7 +27,7 @@ export function Hero() {
               <span aria-hidden className="h-px w-12 sm:w-16 bg-black/70" />
               <p className="font-kopub text-base sm:text-lg">말미잘</p>
             </div>
-            <div className="mt-3 flex items-center gap-3 fade-up fade-up-delay-4">
+            <div className="mt-2 flex items-center gap-3 fade-up fade-up-delay-4">
               <a
                 href="https://apps.apple.com/kr/app/%EB%A7%90%EB%AF%B8%EC%9E%98/id6769989593"
                 target="_blank"
