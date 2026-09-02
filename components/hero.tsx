@@ -27,9 +27,36 @@ export function Hero() {
               <span aria-hidden className="h-px w-12 sm:w-16 bg-black/70" />
               <p className="font-kopub text-base sm:text-lg">말미잘</p>
             </div>
-            <p className="mt-3 text-xs sm:text-sm text-black/55 tracking-wide fade-up fade-up-delay-4">
-              available on App Store / Google Play
-            </p>
+            <div className="mt-3 flex items-center gap-3 fade-up fade-up-delay-4">
+              <a
+                href="https://apps.apple.com/kr/app/%EB%A7%90%EB%AF%B8%EC%9E%98/id6769989593"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="App Store에서 다운로드"
+              >
+                <Image
+                  src="/badges/app-store-badge.svg"
+                  alt="Download on the App Store"
+                  width={162}
+                  height={48}
+                  className="h-12 w-auto"
+                />
+              </a>
+              <a
+                href="https://play.google.com/store/apps/details?id=com.malmijal.malmijal"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Google Play에서 다운로드"
+              >
+                <Image
+                  src="/badges/google-play-badge.png"
+                  alt="Get it on Google Play"
+                  width={162}
+                  height={48}
+                  className="h-12 w-auto"
+                />
+              </a>
+            </div>
           </div>
         </div>
 
