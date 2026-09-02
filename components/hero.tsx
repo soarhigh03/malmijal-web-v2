@@ -35,7 +35,7 @@ export function Hero() {
                 aria-label="App Store에서 다운로드"
               >
                 <Image
-                  src="/badges/app-store-badge.svg"
+                  src="/badges/malmijal_appstore_badge_black.svg"
                   alt="Download on the App Store"
                   width={162}
                   height={48}
@@ -49,7 +49,7 @@ export function Hero() {
                 aria-label="Google Play에서 다운로드"
               >
                 <Image
-                  src="/badges/google-play-badge.png"
+                  src="/badges/malmijal_playstore_badge_black.png"
                   alt="Get it on Google Play"
                   width={162}
                   height={48}
