@@ -57,9 +57,9 @@ export const metadata: Metadata = {
   title,
   description,
   robots: {
-    index: false,
-    follow: false,
-    googleBot: { index: false, follow: false },
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true },
   },
   alternates: {
     canonical: "/download",
