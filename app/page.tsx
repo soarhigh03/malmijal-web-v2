@@ -16,8 +16,8 @@ export default function Home() {
         <Hero />
         <Features />
         <Scoring />
-        <Faq />
         <PopularPosts />
+        <Faq />
       </main>
       <Footer />
     </>

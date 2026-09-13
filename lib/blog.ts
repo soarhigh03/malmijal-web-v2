@@ -165,7 +165,7 @@ export async function getPost(slug: string): Promise<Post | null> {
   if (!fs.existsSync(full)) return null;
   const { meta, content } = buildMeta(file);
   const raw_html = String(
-    await remark().use(remarkGfm).use(remarkHtml).process(content),
+    await remark().use(remarkGfm, { singleTilde: false }).use(remarkHtml).process(content),
   );
   const html = raw_html.replace(
     /<table>/g,
