@@ -5,6 +5,7 @@ import Script from "next/script";
 import type { Metadata } from "next";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { BlogArticle } from "@/components/blog-article";
 import { PostFooter } from "@/components/post-footer";
 import { getPost, getAllPostMeta, formatDate } from "@/lib/blog";
 import { absoluteUrl, siteName } from "@/lib/site";
@@ -153,10 +154,7 @@ export default async function PostPage({
             </div>
           )}
 
-          <div
-            className="prose-blog"
-            dangerouslySetInnerHTML={{ __html: post.html }}
-          />
+          <BlogArticle html={post.html} slug={post.slug} />
 
           <PostFooter post={post} />
         </article>

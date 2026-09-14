@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { TrackedLink } from "@/components/tracked-link";
 import { getAllPostMeta, type PostMeta } from "@/lib/blog";
 import type { Post } from "@/lib/blog";
 
@@ -38,9 +39,11 @@ export function PostFooter({ post }: { post: Post }) {
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {related.map((r) => (
-              <Link
+              <TrackedLink
                 key={r.slug}
                 href={`/blog/${r.slug}`}
+                fromSlug={post.slug}
+                position="related"
                 className="bg-white/60 backdrop-blur-sm rounded-2xl border border-black/5 p-5 block"
               >
                 <p className="font-kopub text-black text-base leading-snug mb-2">
@@ -49,7 +52,7 @@ export function PostFooter({ post }: { post: Post }) {
                 <p className="text-black/60 text-sm leading-relaxed line-clamp-2">
                   {r.excerpt}
                 </p>
-              </Link>
+              </TrackedLink>
             ))}
           </div>
         </div>

@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import "./globals.css";
 import { siteName, siteUrl } from "@/lib/site";
+import { GaScript } from "@/lib/analytics";
 
 const title = "말미잘 — 면접·발표 전 60초 AI 스피치 진단";
 const description =
@@ -83,7 +84,10 @@ export default function RootLayout({
           href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css"
         />
       </head>
-      <body className="min-h-screen bg-[#f0f0f0]">{children}</body>
+      <body className="min-h-screen bg-[#f0f0f0]">
+        <GaScript />
+        {children}
+      </body>
     </html>
   );
 }

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { TrackedLink } from "@/components/tracked-link";
 
 const POSTS = [
   {
@@ -28,9 +28,11 @@ export function PopularPosts() {
 
         <div className="divide-y divide-black/10 border-t border-b border-black/10">
           {POSTS.map((post) => (
-            <Link
+            <TrackedLink
               key={post.href}
               href={post.href}
+              fromSlug="home"
+              position="popular"
               className="group flex items-center justify-between gap-6 py-6"
             >
               <span className="font-kopub text-black text-lg sm:text-xl leading-snug group-hover:text-black/70 transition-colors">
@@ -42,7 +44,7 @@ export function PopularPosts() {
               >
                 →
               </span>
-            </Link>
+            </TrackedLink>
           ))}
         </div>
       </div>

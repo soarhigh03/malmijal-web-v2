@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { QRCodeSVG } from "qrcode.react";
 import { siteName } from "@/lib/site";
 import { AndroidDownloadButton } from "./android-notice";
-import { GaScript, IosDownloadButton } from "./analytics";
+import { IosDownloadButton } from "./analytics";
 
 const IOS_URL =
   "https://apps.apple.com/kr/app/%EB%A7%90%EB%AF%B8%EC%9E%98/id6769989593";
@@ -90,7 +90,6 @@ export const metadata: Metadata = {
 export default function DownloadPage() {
   return (
     <main className="relative min-h-screen overflow-hidden text-[#18213a]" style={{ background: palette.pageBackground }}>
-      <GaScript />
       <Decorations />
 
       <section className="relative z-10 mx-auto flex min-h-screen w-full max-w-5xl flex-col px-5 py-4 sm:px-8">
