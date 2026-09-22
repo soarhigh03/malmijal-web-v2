@@ -18,6 +18,7 @@ export type PostMeta = {
   slug: string;
   title: string;
   date: string;
+  lastModified?: string;
   excerpt: string;
   author?: string;
   cover?: string;
@@ -98,6 +99,12 @@ function buildMeta(file: string): { meta: PostMeta; content: string } {
         : data.date instanceof Date
           ? data.date.toISOString()
           : "",
+    lastModified:
+      typeof data.lastModified === "string"
+        ? data.lastModified
+        : data.lastModified instanceof Date
+          ? data.lastModified.toISOString()
+          : undefined,
     excerpt: typeof data.excerpt === "string" ? data.excerpt : "",
     author: typeof data.author === "string" ? data.author : undefined,
     cover: resolveCover(data.cover, slug),

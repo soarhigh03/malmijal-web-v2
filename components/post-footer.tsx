@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { TrackedLink } from "@/components/tracked-link";
+import { BlogCtaBanner } from "@/components/blog-cta-banner";
 import { getAllPostMeta, type PostMeta } from "@/lib/blog";
 import type { Post } from "@/lib/blog";
 
@@ -25,12 +25,7 @@ export function PostFooter({ post }: { post: Post }) {
 
   return (
     <div className="mt-16">
-      <p className="mt-10 pt-8 border-t border-black/10 text-black/70 text-base leading-relaxed">
-        60초만 말해보고, 내 말하기를 다섯 개 차원으로 분석받아보세요.{" "}
-        <Link href="/download" className="text-black font-medium underline underline-offset-4 hover:text-black/70 transition-colors">
-          말미잘 무료로 시작하기
-        </Link>
-      </p>
+      <BlogCtaBanner slug={post.slug} />
 
       {related.length > 0 && (
         <div className="mt-12">

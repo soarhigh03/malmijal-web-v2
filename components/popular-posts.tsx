@@ -2,15 +2,15 @@ import { TrackedLink } from "@/components/tracked-link";
 
 const POSTS = [
   {
-    title: "발표 대본 분량 정하는 법 (5분·10분·15분·20분)",
+    title: "5분·10분·15분·20분 발표 대본 분량: 글자 수 계산 예시",
     href: "/blog/presentation-script-length",
   },
   {
-    title: "면접 두괄식 답변 예시",
+    title: "두괄식 답변 예시: 면접·보고에서 결론부터 말하는 법",
     href: "/blog/interview-top-down-answer-examples",
   },
   {
-    title: "면접 답변 길이, 몇 초가 적당할까",
+    title: "면접 답변 길이: 질문별 시간 기준과 짧게 줄이는 예시",
     href: "/blog/interview-answer-length",
   },
 ];
