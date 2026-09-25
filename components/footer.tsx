@@ -59,7 +59,7 @@ export function Footer() {
           <span aria-hidden className="text-black/30">|</span>
           <Link href="/terms" className="hover:text-black/70 transition-colors">이용약관</Link>
           <span aria-hidden className="text-black/30">|</span>
-          <a href="https://morning-punch-c8d.notion.site/36bc5a52750880ba98d5dcc5675ea05a" target="_blank" rel="noopener noreferrer" className="hover:text-black/70 transition-colors">고객지원</a>
+          <Link href="/support" className="hover:text-black/70 transition-colors">고객지원</Link>
         </p>
         <p className="text-[11px] text-black/40">
           Google Play 및 Google Play 로고는 Google LLC의 상표입니다.

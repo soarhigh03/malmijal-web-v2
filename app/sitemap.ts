@@ -37,12 +37,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  const legalSlugs: LegalSlug[] = ["privacy", "terms"];
+  const legalSlugs: LegalSlug[] = ["privacy", "terms", "support"];
   const legalRoutes: MetadataRoute.Sitemap = legalSlugs.map((slug) => {
     const meta = getLegalMeta(slug);
+    const lastModified = meta.updatedAt ?? meta.effectiveDate;
     return {
       url: absoluteUrl(`/${slug}`),
-      lastModified: new Date(meta.updatedAt ?? meta.effectiveDate),
+      lastModified: lastModified ? new Date(lastModified) : now,
       changeFrequency: "yearly",
       priority: 0.3,
     };

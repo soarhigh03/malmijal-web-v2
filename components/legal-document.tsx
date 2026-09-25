@@ -14,12 +14,14 @@ export function LegalDocument({ doc }: { doc: LegalDoc }) {
           </h1>
 
           <p className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-black/55 mb-10 sm:mb-12">
-            <span>
-              시행일 <time dateTime={doc.effectiveDate}>{formatDate(doc.effectiveDate)}</time>
-            </span>
+            {doc.effectiveDate && (
+              <span>
+                시행일 <time dateTime={doc.effectiveDate}>{formatDate(doc.effectiveDate)}</time>
+              </span>
+            )}
             {doc.updatedAt && (
               <>
-                <span aria-hidden>·</span>
+                {doc.effectiveDate && <span aria-hidden>·</span>}
                 <span>
                   최종 수정일 <time dateTime={doc.updatedAt}>{formatDate(doc.updatedAt)}</time>
                 </span>

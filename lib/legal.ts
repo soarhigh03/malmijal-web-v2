@@ -5,12 +5,12 @@ import { markdownToHtml } from "./markdown";
 
 const LEGAL_DIR = path.join(process.cwd(), "content/legal");
 
-export type LegalSlug = "privacy" | "terms";
+export type LegalSlug = "privacy" | "terms" | "support";
 
 export type LegalMeta = {
   slug: LegalSlug;
   title: string;
-  effectiveDate: string;
+  effectiveDate?: string;
   updatedAt?: string;
 };
 
@@ -28,14 +28,15 @@ function readLegalFile(slug: LegalSlug): { meta: LegalMeta; content: string } {
   const raw = fs.readFileSync(path.join(LEGAL_DIR, `${slug}.md`), "utf-8");
   const { data, content } = matter(raw);
   const effectiveDate = toDateString(data.effectiveDate);
-  if (typeof data.title !== "string" || !effectiveDate) {
-    throw new Error(`content/legal/${slug}.md: frontmatter needs title and effectiveDate`);
+  const updatedAt = toDateString(data.updatedAt);
+  if (typeof data.title !== "string" || !(effectiveDate || updatedAt)) {
+    throw new Error(`content/legal/${slug}.md: frontmatter needs title and effectiveDate or updatedAt`);
   }
   const meta: LegalMeta = {
     slug,
     title: data.title,
     effectiveDate,
-    updatedAt: toDateString(data.updatedAt),
+    updatedAt,
   };
   return { meta, content };
 }
