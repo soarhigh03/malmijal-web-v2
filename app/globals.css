@@ -272,6 +272,9 @@ body {
   border-bottom: 1px solid rgba(0,0,0,0.08);
 }
 
+/* Legal pages (/privacy, /terms): let long URLs in table cells wrap */
+.prose-legal td a { overflow-wrap: anywhere; }
+
 /* ---- Mobile adjustments ---- */
 @media (max-width: 767px) {
   .prose-blog {

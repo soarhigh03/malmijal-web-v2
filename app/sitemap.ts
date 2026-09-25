@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getAllPostMeta } from "@/lib/blog";
+import { getLegalMeta, type LegalSlug } from "@/lib/legal";
 import { absoluteUrl, siteUrl } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -36,5 +37,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...blogRoutes];
+  const legalSlugs: LegalSlug[] = ["privacy", "terms"];
+  const legalRoutes: MetadataRoute.Sitemap = legalSlugs.map((slug) => {
+    const meta = getLegalMeta(slug);
+    return {
+      url: absoluteUrl(`/${slug}`),
+      lastModified: new Date(meta.updatedAt ?? meta.effectiveDate),
+      changeFrequency: "yearly",
+      priority: 0.3,
+    };
+  });
+  return [...staticRoutes, ...blogRoutes, ...legalRoutes];
 }
