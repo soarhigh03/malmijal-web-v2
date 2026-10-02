@@ -1,14 +1,13 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import Script from "next/script";
 import type { Metadata } from "next";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { BlogArticle } from "@/components/blog-article";
 import { PostFooter } from "@/components/post-footer";
 import { getPost, getAllPostMeta, formatDate } from "@/lib/blog";
-import { absoluteUrl, siteName } from "@/lib/site";
+import { absoluteUrl, brandName, siteName } from "@/lib/site";
 
 type Params = { slug: string };
 
@@ -25,7 +24,7 @@ export async function generateMetadata({
   const post = await getPost(slug);
   if (!post) return { title: "Not found — 말미잘" };
   return {
-    title: post.title,
+    title: { absolute: post.title },
     description: post.excerpt,
     alternates: {
       canonical: `/blog/${post.slug}`,
@@ -69,10 +68,10 @@ export default async function PostPage({
         datePublished: post.date || undefined,
         author: post.author
           ? { "@type": "Person", name: post.author }
-          : { "@type": "Organization", name: siteName },
+          : { "@type": "Organization", name: brandName },
         publisher: {
           "@type": "Organization",
-          name: siteName,
+          name: brandName,
           logo: {
             "@type": "ImageObject",
             url: absoluteUrl("/assets/logo/app-icon.png"),
@@ -102,14 +101,14 @@ export default async function PostPage({
   return (
     <>
       {articleJsonLd && (
-        <Script
+        <script
           id={`blog-post-jsonld-${post.slug}`}
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
         />
       )}
       {faqJsonLd && (
-        <Script
+        <script
           id={`blog-faq-jsonld-${post.slug}`}
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}

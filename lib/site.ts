@@ -2,7 +2,8 @@ export const siteUrl = (
   process.env.NEXT_PUBLIC_SITE_URL || "https://malmijal.kr"
 ).replace(/\/$/, "");
 
-export const siteName = "말미잘";
+export const brandName = "말미잘";
+export const siteName = "말미잘 : 말 미친듯이 잘하기";
 
 export function absoluteUrl(path = ""): string {
   if (!path) return siteUrl;

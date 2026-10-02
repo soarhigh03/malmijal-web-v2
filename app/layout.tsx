@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import "./globals.css";
-import { siteName, siteUrl } from "@/lib/site";
+import { brandName, siteName, siteUrl } from "@/lib/site";
 import { GaScript } from "@/lib/analytics";
 
 const title = "말미잘 — 면접·발표 전 60초 AI 스피치 진단";
@@ -15,9 +15,25 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
     default: title,
-    template: `%s — ${siteName}`,
+    template: `%s — ${brandName}`,
   },
   description,
+  icons: {
+    icon: [
+      {
+        url: "/assets/logo/app-icon.png",
+        type: "image/png",
+        sizes: "512x512",
+      },
+    ],
+    apple: [
+      {
+        url: "/assets/logo/app-icon.png",
+        type: "image/png",
+        sizes: "512x512",
+      },
+    ],
+  },
   alternates: {
     canonical: "/",
   },
