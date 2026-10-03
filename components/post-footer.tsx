@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { TrackedLink } from "@/components/tracked-link";
 import { getAllPostMeta, type PostMeta } from "@/lib/blog";
 import type { Post } from "@/lib/blog";
@@ -26,7 +27,17 @@ export function PostFooter({ post }: { post: Post }) {
 
   return (
     <div className="mt-16">
-      <p className="font-kopub text-black/40 text-sm tracking-widest mb-6">
+      <p className="mt-10 pt-8 border-t border-black/10 text-black/70 text-base leading-relaxed">
+        60초만 말해보고, 내 말하기를 분석받아보세요.{" "}
+        <Link
+          href="/download"
+          className="text-black font-medium underline underline-offset-4 hover:text-black/70 transition-colors"
+        >
+          말미잘 첫 분석 무료
+        </Link>
+      </p>
+
+      <p className="mt-12 font-kopub text-black/40 text-sm tracking-widest mb-6">
         관련 글
       </p>
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
