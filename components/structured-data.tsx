@@ -31,7 +31,7 @@ export async function StructuredData() {
     applicationCategory: "EducationalApplication",
     offers: {
       "@type": "Offer",
-      price: "4400",
+      price: "6900",
       priceCurrency: "KRW",
     },
     url: siteUrl,

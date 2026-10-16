@@ -1,10 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import "./globals.css";
-import { brandName, siteName, siteUrl } from "@/lib/site";
+import { brandName, ogImageAlt, siteName, siteUrl } from "@/lib/site";
 import { GaScript } from "@/lib/analytics";
 
-const title = "말미잘 — 면접·발표 전 60초 AI 스피치 진단";
+const title = "말미잘 : 면접·발표 전 60초 AI 스피치 진단";
 const description =
   "말미잘은 방금 한 말을 분석해 속도, 유창성, 자신감, 전달력, 구조를 보여주는 한국어 AI 스피치 코치입니다.";
 const googleSiteVerification =
@@ -19,6 +19,7 @@ export const metadata: Metadata = {
   },
   description,
   icons: {
+    shortcut: "https://malmijal.kr/favicon.ico",
     icon: [
       {
         url: "/assets/logo/app-icon.png",
@@ -49,7 +50,7 @@ export const metadata: Metadata = {
         url: "/og/og-default.png",
         width: 1200,
         height: 630,
-        alt: "말미잘 — 한국어 AI 스피치 코치",
+        alt: ogImageAlt,
       },
     ],
   },

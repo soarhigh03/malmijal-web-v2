@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { QRCodeSVG } from "qrcode.react";
-import { siteName } from "@/lib/site";
+import { ogImageAlt, siteName } from "@/lib/site";
 import { AndroidDownloadButton } from "./android-notice";
 import { DownloadTracker, IosDownloadButton } from "./analytics";
 
@@ -54,7 +54,7 @@ const description =
   "한국어 말하기를 점수로 확인하고 매일 더 또렷하게 연습하는 AI 스피치 코치, 말미잘을 다운로드하세요.";
 
 export const metadata: Metadata = {
-  title,
+  title: { absolute: title },
   description,
   robots: {
     index: true,
@@ -75,7 +75,7 @@ export const metadata: Metadata = {
         url: "/og/og-default.png",
         width: 1200,
         height: 630,
-        alt: "말미잘 — 한국어 AI 스피치 코치",
+        alt: ogImageAlt,
       },
     ],
   },

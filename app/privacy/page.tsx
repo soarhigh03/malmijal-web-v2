@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { LegalDocument } from "@/components/legal-document";
 import { getLegalDoc } from "@/lib/legal";
-import { siteName } from "@/lib/site";
+import { ogImageAlt, siteName } from "@/lib/site";
 
 const title = "개인정보 처리방침 | 말미잘";
 const description = "말미잘 앱의 개인정보 처리방침입니다.";
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
         url: "/og/og-default.png",
         width: 1200,
         height: 630,
-        alt: "말미잘 — 한국어 AI 스피치 코치",
+        alt: ogImageAlt,
       },
     ],
   },

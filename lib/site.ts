@@ -4,6 +4,7 @@ export const siteUrl = (
 
 export const brandName = "말미잘";
 export const siteName = "말미잘 : 말 미친듯이 잘하기";
+export const ogImageAlt = "말미잘 : 한국어 AI 스피치 코치";
 
 export function absoluteUrl(path = ""): string {
   if (!path) return siteUrl;
