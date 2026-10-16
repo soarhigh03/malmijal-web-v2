@@ -11,7 +11,7 @@ const description =
   "면접·발표 말하기, 한국어 스피치 진단, AI 스피치 코치 활용법을 정리한 말미잘 블로그입니다.";
 
 export const metadata: Metadata = {
-  title,
+  title: { absolute: title },
   description,
   alternates: {
     canonical: "/blog",

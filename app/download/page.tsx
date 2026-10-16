@@ -54,7 +54,7 @@ const description =
   "한국어 말하기를 점수로 확인하고 매일 더 또렷하게 연습하는 AI 스피치 코치, 말미잘을 다운로드하세요.";
 
 export const metadata: Metadata = {
-  title,
+  title: { absolute: title },
   description,
   robots: {
     index: true,
