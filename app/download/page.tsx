@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { QRCodeSVG } from "qrcode.react";
-import { siteName } from "@/lib/site";
+import { ogImageAlt, siteName } from "@/lib/site";
 import { AndroidDownloadButton } from "./android-notice";
 import { DownloadTracker, IosDownloadButton } from "./analytics";
 
@@ -75,7 +75,7 @@ export const metadata: Metadata = {
         url: "/og/og-default.png",
         width: 1200,
         height: 630,
-        alt: "말미잘 — 한국어 AI 스피치 코치",
+        alt: ogImageAlt,
       },
     ],
   },

@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { getAllPostMeta, formatDate, type PostMeta } from "@/lib/blog";
-import { siteName } from "@/lib/site";
+import { ogImageAlt, siteName } from "@/lib/site";
 
 const title = "말미잘 블로그";
 const description =
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
         url: "/og/og-default.png",
         width: 1200,
         height: 630,
-        alt: "말미잘 — 한국어 AI 스피치 코치",
+        alt: ogImageAlt,
       },
     ],
   },
