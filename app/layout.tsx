@@ -19,6 +19,7 @@ export const metadata: Metadata = {
   },
   description,
   icons: {
+    shortcut: "https://malmijal.kr/favicon.ico",
     icon: [
       {
         url: "/assets/logo/app-icon.png",
