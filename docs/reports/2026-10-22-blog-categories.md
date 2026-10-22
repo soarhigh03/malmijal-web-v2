@@ -29,7 +29,7 @@ An anonymous `curl` returns `302`. This looks like Vercel Deployment Protection,
 | `lib/blog.ts` | `PostMeta.category`. `buildMeta()` throws on a missing or unknown category. New `getMostReadPosts()` throws on an unknown slug. **`getAllPostMeta()` sort is unchanged.** |
 | `content/blog/*.md` (26) | One `category: <key>` line after `date:`, per the mapping. No other content edits. |
 | `content/blog/TEMPLATE.md` | `category:` with a comment listing the allowed keys and labels. |
-| `components/blog-index.tsx` (new) | `CoverImage` (moved), `GalleryCard` (moved; badge `News` → category label; date label precomputed on the server), `CategoryTabs`, `CategoryGrid` (filters and sorts date desc, then `title.localeCompare(…, 'ko')`), `MostReadPosts`. |
+| `components/blog-index.tsx` (new) | `CoverImage` (moved), `GalleryCard` (moved; badge `News` → category label; date label precomputed on the server), `CategoryTabs`, `CategoryGrid` (filters and sorts date desc, then `title.localeCompare(…, 'ko', { numeric: true })`), `MostReadPosts`. |
 | `components/blog-category-filter.tsx` (new, client) | Reads `useSearchParams().get("category")`. An unknown or missing value falls back to 전체. |
 | `app/blog/page.tsx` | Order: H1 → Featured (unchanged) → 많이 읽은 글. → `<Suspense fallback={full grid}>` tabs + grid. The featured post stays excluded from the grid. |
 
@@ -116,7 +116,15 @@ $ diff docs/reports/2026-10-22-blog-categories-sitemap-before.xml .next/server/a
 | `?category=practice` | 4 (methodology is Featured, excluded as agreed) | 연습법·도구 | 0 |
 | `?category=xyz` | 25 | 전체 | 0 |
 
-- Sort check (발표): the three 2026-10-07 posts are ordered by `localeCompare('ko')`: 20분 발표 구성… → 5분 발표 대본… → 발표 시간 초과할 때…. "20분" sorts before "5분" because this is a string comparison, as specified.
+- Sort check (발표), follow-up fix: the tie-break is now `a.title.localeCompare(b.title, 'ko', { numeric: true })`, so "5분…" sorts before "20분…". I re-ran `npx tsc --noEmit` (no errors) and `next build` (`○ /blog`, static). Rendered order of `?category=presentation` after hydration, from headless Chrome:
+
+  1. 2026.10.07 · 5분 발표 대본 예시: 도입부터 마무리까지 한 편으로 보기
+  2. 2026.10.07 · 20분 발표 구성 예시: 시간 배분표와 중간 요약 넣는 법
+  3. 2026.10.07 · 발표 시간 초과할 때 대본 줄이는 법: 수정 전후 예시
+  4. 2026.08.13 · 5분·10분·15분·20분 발표 대본 분량: 글자 수 계산 예시
+  5. 2026.08.13 · 발표 대본 외우는 법: 통암기 대신 블록 암기가 안전합니다
+  6. 2026.08.13 · 발표 순서 정하는 법, 3블록만 먼저 잡으세요
+  7. 2026.08.13 · 발표 중 대본을 까먹었을 때, 되감지 말고 다음 블록으로 가세요
 - Client navigation, via Chrome DevTools at 1280:
   - Clicking 두괄식·논리 gives `?category=structure` with 3 cards. Scroll position is kept (1019 → 1019).
   - `history.back()` returns to `/blog` with 25 cards.

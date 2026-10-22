@@ -118,7 +118,7 @@ function CategoryTabs({ active }: { active: BlogCategory | null }) {
 function sortForGrid(posts: BlogCardPost[]): BlogCardPost[] {
   return [...posts].sort((a, b) => {
     if (a.date !== b.date) return a.date < b.date ? 1 : -1;
-    return a.title.localeCompare(b.title, "ko");
+    return a.title.localeCompare(b.title, "ko", { numeric: true });
   });
 }
 
