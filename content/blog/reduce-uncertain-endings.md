@@ -1,6 +1,7 @@
 ---
 title: "‘것 같아요’ 말버릇 줄이기: 상황별 대체 표현과 예시"
 date: 2026-10-07
+category: delivery
 excerpt: ‘것 같아요’를 무조건 ‘입니다’로 바꿀 필요는 없어요. 확인한 사실, 내 의견, 아직 모르는 내용을 구분해서 정중하고 명확하게 말하는 대체 표현을 예시로 정리했어요.
 author: 박병호
 tags: [speech, workplace, communication]

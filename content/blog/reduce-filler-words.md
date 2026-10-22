@@ -1,6 +1,7 @@
 ---
 title: “음, 어, 그…”를 줄이는 법, 군말 대신 침묵을 쓰세요
 date: 2026-08-13
+category: delivery
 excerpt: 말할 때 나오는 “음, 어, 그…”는 무조건 참는다고 줄지 않아요. 군말이 생기는 순간을 찾고, 짧은 침묵으로 바꾸는 연습법을 정리했어요.
 author: 최은우
 tags: [speech, practice]

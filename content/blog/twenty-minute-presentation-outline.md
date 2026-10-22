@@ -1,6 +1,7 @@
 ---
 title: "20분 발표 구성 예시: 시간 배분표와 중간 요약 넣는 법"
 date: 2026-10-07
+category: presentation
 excerpt: 20분 발표는 내용을 늘리기보다 구간별 역할을 나누는 것이 먼저예요. 문제·제안·실행으로 이어지는 시간 배분표와 중간 요약 멘트, 시간이 부족할 때 조정하는 방법을 정리했어요.
 author: 박병호
 tags: [presentation, structure, workplace]

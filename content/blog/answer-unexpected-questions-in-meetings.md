@@ -1,6 +1,7 @@
 ---
 title: 회의에서 갑자기 질문받았을 때, 3문장으로 답하세요
 date: 2026-08-13
+category: interview-meeting
 excerpt: 회의에서 예상하지 못한 질문을 받으면 바로 완벽한 답을 만들려고 하지 마세요. 결론·이유·다음 행동 3문장으로 즉석 답변을 정리하는 법을 소개합니다.
 author: 최은우
 tags: [workplace, speech]

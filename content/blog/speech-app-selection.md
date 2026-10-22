@@ -1,6 +1,7 @@
 ---
 title: 스피치 앱 고르는 법, 설치 전에 확인할 5가지
 date: 2026-08-25
+category: practice
 excerpt: 스피치 앱마다 점수를 매기는 방식이 달라요. 스피치 앱을 고르기 전에 확인할 다섯 가지를 정리했어요. 한국어 기준 측정, 점수의 근거 공개, 판정 일관성까지 다뤄요.
 author: 박병호
 tags: [speech, product]

@@ -1,6 +1,7 @@
 ---
 title: 상사에게 보고할 때 핵심만 말하는 법, 30초 보고 공식
 date: 2026-08-13
+category: interview-meeting
 excerpt: 상사에게 보고할 때는 배경부터 길게 설명하지 말고 결론·현재 상태·문제·요청 순서로 말해보세요. 30초 구두보고 공식을 예시와 함께 정리했어요.
 author: 최은우
 tags: [workplace, speech]

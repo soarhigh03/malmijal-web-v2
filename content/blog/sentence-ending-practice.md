@@ -1,6 +1,7 @@
 ---
 title: "말끝 안 흐리는 연습 문장 10개: 면접·보고에서 또렷하게 끝내기"
 date: 2026-10-07
+category: delivery
 excerpt: 말끝 안 흐리는 법을 읽었다면 이제 직접 말해볼 차례예요. 면접·보고·의견 제시에서 쓰는 연습 문장 10개와 끊어 읽을 위치, 녹음 후 확인할 점을 정리했어요.
 author: 박병호
 tags: [speech, practice, workplace]

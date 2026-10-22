@@ -1,6 +1,7 @@
 ---
 title: "발표 시간 초과할 때 대본 줄이는 법: 수정 전후 예시"
 date: 2026-10-07
+category: presentation
 excerpt: 발표 시간이 자꾸 초과된다면 말속도보다 원고를 먼저 보세요. 배경 설명, 반복되는 주장, 여러 사례를 덜어내는 수정 전후 예시와 시간을 다시 맞추는 방법을 정리했어요.
 author: 박병호
 tags: [presentation, script, editing]

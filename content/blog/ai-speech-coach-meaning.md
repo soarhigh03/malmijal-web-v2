@@ -1,6 +1,7 @@
 ---
 title: AI 스피치 코치란? 사람 코치와 무엇이 다른지 정리했어요
 date: 2026-08-25
+category: practice
 excerpt: AI 스피치 코치는 녹음에서 말하기 신호를 측정하고 피드백을 주는 도구예요. 무엇을 잘하고 무엇을 못 하는지, 사람 코치와 어떻게 나눠 쓰면 되는지 정리했어요.
 author: 박병호
 tags: [speech, product]

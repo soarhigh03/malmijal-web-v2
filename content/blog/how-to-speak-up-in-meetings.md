@@ -1,6 +1,7 @@
 ---
 title: 회의에서 말 잘하는 법, 원인별 3가지 처방
 date: 2026-07-09
+category: interview-meeting
 excerpt: 회의에서 말을 못 하는 원인은 긴장·지식·구조화 셋 중 하나예요. 자가진단부터 회의 전·중·후 실행법까지, 내일 회의에서 바로 쓸 방법을 정리했어요.
 author: 최은우
 tags: [speech, workplace]

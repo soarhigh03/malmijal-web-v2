@@ -1,6 +1,7 @@
 ---
 title: 발표 순서 정하는 법, 3블록만 먼저 잡으세요
 date: 2026-08-13
+category: presentation
 excerpt: 발표 자료를 만들기 전에 도입·핵심·마무리 3블록부터 잡아보세요. 설명·설득·보고 발표별로 발표 순서를 정하는 방법을 예시와 함께 정리했어요.
 author: 최은우
 tags: [presentation, structure]
