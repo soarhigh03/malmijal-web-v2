@@ -1,6 +1,7 @@
 ---
 title: "5분 발표 대본 예시: 도입부터 마무리까지 한 편으로 보기"
 date: 2026-10-07
+category: presentation
 excerpt: 5분 발표 대본을 어떻게 써야 할지 막막하다면 완성 예시부터 보세요. 팀 프로젝트 개선안을 주제로 슬라이드 5장과 전체 원고, 시간 배분안과 줄일 부분을 정리했어요.
 author: 박병호
 tags: [presentation, script, practice]

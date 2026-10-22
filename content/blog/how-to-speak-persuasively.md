@@ -1,6 +1,7 @@
 ---
 title: 왜 내 말은 설득력이 없을까
 date: 2026-07-09
+category: structure
 excerpt: 설득력은 내용x전달이에요. 설득력 있게 말하는 법을 두 축으로 정리했어요. 근거를 붙이는 법과 PREP 구조, 문장 끝·속도·성량까지 다뤄요.
 author: 최은우
 tags: [speech, persuasion]

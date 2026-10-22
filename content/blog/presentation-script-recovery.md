@@ -1,6 +1,7 @@
 ---
 title: 발표 중 대본을 까먹었을 때, 되감지 말고 다음 블록으로 가세요
 date: 2026-08-13
+category: presentation
 excerpt: 발표 중 문장이 생각나지 않아도 처음부터 다시 말할 필요는 없어요. 대본을 까먹었을 때 티를 줄이고 자연스럽게 복구하는 방법을 정리했어요.
 author: 최은우
 tags: [presentation, speech]

@@ -2,6 +2,12 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { markdownToHtml } from "./markdown";
+import {
+  BLOG_CATEGORIES,
+  MOST_READ_SLUGS,
+  isBlogCategory,
+  type BlogCategory,
+} from "./blog-categories";
 
 const POSTS_DIR = path.join(process.cwd(), "content/blog");
 const PUBLIC_DIR = path.join(process.cwd(), "public");
@@ -18,6 +24,7 @@ export type PostMeta = {
   date: string;
   lastModified?: string;
   excerpt: string;
+  category: BlogCategory;
   author?: string;
   cover?: string;
   tags?: string[];
@@ -88,6 +95,15 @@ function buildMeta(file: string): { meta: PostMeta; content: string } {
   const slug = file.replace(/\.md$/, "");
   const raw = fs.readFileSync(path.join(POSTS_DIR, file), "utf-8");
   const { data, content } = matter(raw);
+  if (!isBlogCategory(data.category)) {
+    const problem =
+      data.category === undefined
+        ? "missing category"
+        : `unknown category "${String(data.category)}"`;
+    throw new Error(
+      `[blog] content/blog/${file}: ${problem}. Allowed: ${BLOG_CATEGORIES.map((c) => c.key).join(", ")}`,
+    );
+  }
   const meta: PostMeta = {
     slug,
     title: typeof data.title === "string" ? data.title : slug,
@@ -104,6 +120,7 @@ function buildMeta(file: string): { meta: PostMeta; content: string } {
           ? data.lastModified.toISOString()
           : undefined,
     excerpt: typeof data.excerpt === "string" ? data.excerpt : "",
+    category: data.category,
     author: typeof data.author === "string" ? data.author : undefined,
     cover: resolveCover(data.cover, slug),
     tags: Array.isArray(data.tags) ? data.tags : undefined,
@@ -118,6 +135,18 @@ export function getAllPostMeta(): PostMeta[] {
   return postFiles()
     .map((f) => buildMeta(f).meta)
     .sort((a, b) => (a.date < b.date ? 1 : -1));
+}
+
+export function getMostReadPosts(posts: PostMeta[]): PostMeta[] {
+  return MOST_READ_SLUGS.map((slug) => {
+    const post = posts.find((p) => p.slug === slug);
+    if (!post) {
+      throw new Error(
+        `[blog] MOST_READ_SLUGS: no post found for "${slug}" (lib/blog-categories.ts)`,
+      );
+    }
+    return post;
+  });
 }
 
 function stripMarkdown(md: string): string {

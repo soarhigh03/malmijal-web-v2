@@ -1,6 +1,7 @@
 ---
 title: "결론부터 말하는 화법: 두괄식 예시와 4주 연습법"
 date: 2026-09-02
+category: structure
 excerpt: 결론부터 말하기가 어려운 건 성격 문제가 아니라 생각의 순서 때문이에요. 결론부터 말하는 화법의 공식(PREP)과 전화·메신저·질문 상황별 예시, 습관으로 만드는 연습법을 정리했어요.
 author: 박병호
 tags: [speech, workplace]

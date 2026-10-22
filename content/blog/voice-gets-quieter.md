@@ -1,6 +1,7 @@
 ---
 title: 말할수록 목소리가 작아지는 이유, 문장 끝 성량부터 확인하세요
 date: 2026-08-13
+category: delivery
 excerpt: 처음에는 괜찮은데 말할수록 목소리가 작아진다면 단순히 성량이 작은 문제가 아닐 수 있어요. 문장 길이·호흡·말끝 습관을 확인하는 방법을 정리했어요.
 author: 최은우
 tags: [speech, confidence]

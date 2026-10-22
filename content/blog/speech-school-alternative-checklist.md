@@ -1,6 +1,7 @@
 ---
 title: 스피치 학원 비용, 얼마나 들까? 3곳 상담 다녀와서 정리한 체크리스트
 date: 2026-08-25
+category: practice
 excerpt: 서울에 위치한 스피치 학원 3군데 상담을 직접 다녀왔어요. 등록 전에 확인할 것들을 정리했습니다. 비용 구조, 수업 형태, 개선 확인 방식까지 다룹니다.
 author: 최은우
 tags: [speech, comparison]

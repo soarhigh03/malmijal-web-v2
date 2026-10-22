@@ -1,9 +1,21 @@
+import { Suspense } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import type { Metadata } from "next";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
-import { getAllPostMeta, formatDate, type PostMeta } from "@/lib/blog";
+import {
+  CategoryGrid,
+  CoverImage,
+  MostReadPosts,
+  type BlogCardPost,
+} from "@/components/blog-index";
+import { BlogCategoryFilter } from "@/components/blog-category-filter";
+import {
+  getAllPostMeta,
+  getMostReadPosts,
+  formatDate,
+  type PostMeta,
+} from "@/lib/blog";
 import { ogImageAlt, siteName } from "@/lib/site";
 
 const title = "말미잘 블로그";
@@ -61,6 +73,13 @@ export default function BlogIndexPage() {
     [featured, ...rest] = posts;
   }
 
+  const toCard = (p: PostMeta): BlogCardPost => ({
+    ...p,
+    dateLabel: formatDate(p.date),
+  });
+  const mostRead = getMostReadPosts(posts).map(toCard);
+  const gridPosts = rest.map(toCard);
+
   return (
     <>
       <Header />
@@ -81,12 +100,14 @@ export default function BlogIndexPage() {
           ) : (
             <>
               <FeaturedCard post={featured} />
-              {rest.length > 0 && (
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mt-16 sm:mt-20">
-                  {rest.map((post) => (
-                    <GalleryCard key={post.slug} post={post} />
-                  ))}
-                </div>
+              <MostReadPosts posts={mostRead} />
+              {gridPosts.length > 0 && (
+                // Fallback is the full unfiltered grid, so the prerendered HTML links every post.
+                <Suspense
+                  fallback={<CategoryGrid posts={gridPosts} active={null} />}
+                >
+                  <BlogCategoryFilter posts={gridPosts} />
+                </Suspense>
               )}
             </>
           )}
@@ -94,38 +115,6 @@ export default function BlogIndexPage() {
       </main>
       <Footer />
     </>
-  );
-}
-
-function CoverImage({
-  src,
-  alt,
-  priority,
-  sizes,
-}: {
-  src?: string;
-  alt: string;
-  priority?: boolean;
-  sizes: string;
-}) {
-  if (src) {
-    return (
-      <Image
-        src={src}
-        alt={alt}
-        fill
-        priority={priority}
-        sizes={sizes}
-        className="object-cover"
-      />
-    );
-  }
-  return (
-    <div className="absolute inset-0 bg-gradient-to-br from-black/[0.06] via-black/[0.04] to-black/[0.08] flex items-center justify-center">
-      <span className="font-kopub text-black/15 text-3xl tracking-widest">
-        말미잘
-      </span>
-    </div>
   );
 }
 
@@ -166,36 +155,6 @@ function FeaturedCard({ post }: { post: PostMeta }) {
           <span className="inline-flex w-fit items-center justify-center px-6 py-3 rounded-full font-kopub text-sm text-white bg-black group-hover:bg-black/85 transition-colors">
             Read more
           </span>
-        </div>
-      </article>
-    </Link>
-  );
-}
-
-function GalleryCard({ post }: { post: PostMeta }) {
-  return (
-    <Link href={`/blog/${post.slug}`} className="group block h-full">
-      <article className="flex flex-col h-full">
-        <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-black/5 mb-5">
-          <CoverImage
-            src={post.cover}
-            alt={post.title}
-            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          />
-        </div>
-        <span className="inline-flex w-fit items-center px-2.5 py-0.5 rounded-md bg-black/5 text-black/70 text-[11px] font-medium tracking-wide mb-3">
-          News
-        </span>
-        <h3 className="font-kopub heading-strong text-black text-lg sm:text-xl leading-snug mb-2 group-hover:text-black/80 transition-colors whitespace-pre-line">
-          {post.title}
-        </h3>
-        <p className="text-black/65 text-sm leading-relaxed mb-4 line-clamp-3 whitespace-pre-line">
-          {post.excerpt}
-        </p>
-        <div className="mt-auto flex items-center gap-2 text-black/45 text-[11px] uppercase tracking-widest">
-          <span>{formatDate(post.date)}</span>
-          <span aria-hidden>·</span>
-          <span>{post.readingMinutes} min</span>
         </div>
       </article>
     </Link>

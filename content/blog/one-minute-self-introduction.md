@@ -1,6 +1,7 @@
 ---
 title: 1분 자기소개 만드는 법, 4블록 공식과 예시
 date: 2026-07-09
+category: interview-meeting
 excerpt: 1분 자기소개는 40~50초면 충분해요. 강점→경험→직무 연결→마무리 4블록 공식과 직군별 예시, 원고 완성 후 말하기 연습법까지 정리했어요.
 author: 최은우
 tags: [interview, speech]

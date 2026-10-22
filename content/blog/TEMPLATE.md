@@ -2,6 +2,9 @@
 # ── 필수 (required) ───────────────────────────────────────
 title: 글 제목을 여기에 적어 주세요
 date: 2026-06-10                       # YYYY-MM-DD 형식
+category: presentation                 # /blog 탭 분류. 없거나 아래 외 값이면 빌드 실패.
+                                       # interview-meeting(면접·회의) | presentation(발표) | structure(두괄식·논리)
+                                       # delivery(말끝·목소리) | practice(연습법·도구)
 excerpt: 카드와 메타 설명에 노출될 한두 줄짜리 요약문.
 
 # ── 선택 (optional) ──────────────────────────────────────

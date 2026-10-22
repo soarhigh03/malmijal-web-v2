@@ -1,6 +1,7 @@
 ---
 title: 혼자서 하는 말하기 연습, 3단계 방법
 date: 2026-07-09
+category: practice
 excerpt: 말하기 연습이 안 느는 이유는 피드백 부재예요. 혼자서도 되는 3단계 연습법을 정리했어요. 소리내어 읽기, 녹음 체크, 1분 말하기 순서예요.
 author: 최은우
 tags: [interview, speech]
