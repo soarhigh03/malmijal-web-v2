@@ -42,6 +42,8 @@ export function Footer() {
           <span aria-hidden className="text-black/30">|</span>
           <span>사업자등록번호 418-23-02270</span>
           <span aria-hidden className="text-black/30">|</span>
+          <span>전화 010-6366-6857</span>
+          <span aria-hidden className="text-black/30">|</span>
           <a
             href="mailto:malmijal.team@gmail.com"
             className="hover:text-black transition-colors"
