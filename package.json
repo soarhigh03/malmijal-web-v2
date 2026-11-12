@@ -9,6 +9,7 @@
     "seo:check": "node scripts/check-sitemap.mjs"
   },
   "dependencies": {
+    "@tosspayments/tosspayments-sdk": "^2.10.0",
     "gray-matter": "^4.0.3",
     "next": "^15.1.6",
     "qrcode.react": "^4.2.0",
@@ -16,7 +17,8 @@
     "react-dom": "^19.0.0",
     "remark": "^15.0.1",
     "remark-gfm": "^4.0.1",
-    "remark-html": "^16.0.1"
+    "remark-html": "^16.0.1",
+    "server-only": "^0.0.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.0.0",
