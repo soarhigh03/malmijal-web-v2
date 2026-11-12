@@ -1,7 +1,7 @@
 ---
 title: "의대 MMI 면접 준비: 상황·윤리 질문에 답하는 4단계 구조"
 date: 2026-11-12
-category: interview-meeting
+category: admissions
 excerpt: MMI(다중 미니 면접)는 여러 면접실을 돌며 짧은 시간 안에 상황·윤리·소통 과제에 답하는 방식이에요. 학교마다 형식은 달라도 답변의 뼈대는 비슷합니다. 상황 정리 → 쟁점 → 판단 → 대안 4단계 구조와 연습법을 정리했어요.
 author: 박병호
 tags: [admissions, interview, structure]

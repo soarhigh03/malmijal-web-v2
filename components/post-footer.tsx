@@ -2,9 +2,16 @@ import Link from "next/link";
 import { TrackedLink } from "@/components/tracked-link";
 import { getAllPostMeta, type PostMeta } from "@/lib/blog";
 import type { Post } from "@/lib/blog";
+import { isIsolatedCategory } from "@/lib/blog-categories";
 
 function getRelatedPosts(current: Post, limit = 3): PostMeta[] {
-  const all = getAllPostMeta().filter((p) => p.slug !== current.slug);
+  // Posts in other categories never link to isolated-category posts.
+  const hideIsolated = !isIsolatedCategory(current.category);
+  const all = getAllPostMeta().filter(
+    (p) =>
+      p.slug !== current.slug &&
+      !(hideIsolated && isIsolatedCategory(p.category)),
+  );
   const currentTags = new Set(current.tags ?? []);
 
   const scored = all.map((p) => {

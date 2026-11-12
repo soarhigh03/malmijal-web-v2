@@ -1,7 +1,7 @@
 ---
 title: "입시 면접 1분 답변, 몇 글자일까? 내 말 속도로 분량 재는 법"
 date: 2026-11-12
-category: interview-meeting
+category: admissions
 excerpt: 1분 답변의 글자 수는 말 속도에 따라 달라져요. 분당 250·300·350자(공백 제외)를 가정한 계산 예시와, 내 속도를 직접 재서 지원 동기·1분 답변 분량을 맞추는 방법을 정리했어요.
 author: 박병호
 tags: [admissions, interview, speech]

@@ -1,7 +1,7 @@
 ---
 title: "면접에서 긴장하면 말이 빨라질 때: 속도를 늦추는 연습법"
 date: 2026-11-12
-category: interview-meeting
+category: admissions
 excerpt: 긴장하면 말이 빨라지는 건 흔한 일이에요. 면접에서 말이 빨라지는 이유, 빨라졌을 때 생기는 문제, 그리고 첫 문장·문장 끝·쉼을 이용해 속도를 늦추는 연습법을 정리했어요.
 author: 박병호
 tags: [admissions, interview, delivery]

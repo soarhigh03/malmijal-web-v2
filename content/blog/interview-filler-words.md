@@ -1,7 +1,7 @@
 ---
 title: "면접 답변에서 '음, 어' 줄이는 법: 군말 대신 쉼을 쓰세요"
 date: 2026-11-12
-category: interview-meeting
+category: admissions
 excerpt: 면접 답변의 '음, 어, 그, 약간' 같은 군말은 생각할 시간을 벌려는 습관이에요. 군말이 자주 나오는 자리, 쉼으로 바꾸는 연습법, 녹음으로 내 군말 습관을 찾는 방법을 정리했어요.
 author: 박병호
 tags: [admissions, interview, delivery]

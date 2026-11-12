@@ -1,7 +1,7 @@
 ---
 title: "자녀 대입 면접 준비, 집에서 부모가 도와주는 법"
 date: 2026-11-12
-category: interview-meeting
+category: admissions
 excerpt: 부모가 질문자와 타이머 역할만 잘해도 자녀의 면접 연습은 훨씬 실전에 가까워져요. 집에서 하는 모의면접 진행법, 피드백할 때 지킬 세 가지, 오히려 방해가 되는 도움을 정리했어요.
 author: 박병호
 tags: [admissions, interview, parents]
