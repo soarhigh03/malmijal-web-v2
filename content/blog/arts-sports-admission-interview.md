@@ -1,7 +1,7 @@
 ---
 title: "예체능 입시 면접: 전공 동기와 작품·실기를 말로 설명하는 법"
 date: 2026-11-12
-category: interview-meeting
+category: admissions
 excerpt: 예체능 면접에서는 실력보다 '내 작업을 말로 설명하는 힘'이 드러나요. 자주 나오는 질문 유형, 작품·곡·훈련 과정을 설명하는 4단계 구조, 전공 용어를 쓸 때 주의할 점을 정리했어요.
 author: 박병호
 tags: [admissions, interview, speech]

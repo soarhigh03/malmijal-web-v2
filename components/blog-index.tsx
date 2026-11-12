@@ -5,6 +5,7 @@ import {
   ALL_CATEGORIES_LABEL,
   BLOG_CATEGORIES,
   categoryLabel,
+  isIsolatedCategory,
   type BlogCategory,
 } from "@/lib/blog-categories";
 
@@ -130,7 +131,9 @@ export function CategoryGrid({
   active: BlogCategory | null;
 }) {
   const visible = sortForGrid(
-    active ? posts.filter((p) => p.category === active) : posts,
+    active
+      ? posts.filter((p) => p.category === active)
+      : posts.filter((p) => !isIsolatedCategory(p.category)),
   );
 
   return (

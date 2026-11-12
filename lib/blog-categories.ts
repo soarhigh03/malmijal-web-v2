@@ -7,14 +7,24 @@ export const BLOG_CATEGORIES = [
   { key: "structure", label: "두괄식·논리" },
   { key: "delivery", label: "말끝·목소리" },
   { key: "practice", label: "연습법·도구" },
+  { key: "admissions", label: "대학 입시" },
 ] as const;
 
 export type BlogCategory = (typeof BLOG_CATEGORIES)[number]["key"];
 
 export const ALL_CATEGORIES_LABEL = "전체";
 
+// Categories kept apart from the rest of the blog: their posts appear only under
+// their own tab — not in "전체", the featured card, "많이 읽은 글.", or related
+// posts on other categories' pages. URLs, sitemap, and indexing are unchanged.
+export const ISOLATED_CATEGORIES: readonly BlogCategory[] = ["admissions"];
+
 export function isBlogCategory(value: unknown): value is BlogCategory {
   return BLOG_CATEGORIES.some((c) => c.key === value);
+}
+
+export function isIsolatedCategory(key: BlogCategory): boolean {
+  return ISOLATED_CATEGORIES.includes(key);
 }
 
 export function categoryLabel(key: BlogCategory): string {

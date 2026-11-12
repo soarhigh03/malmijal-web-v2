@@ -16,6 +16,7 @@ import {
   formatDate,
   type PostMeta,
 } from "@/lib/blog";
+import { isIsolatedCategory } from "@/lib/blog-categories";
 import { ogImageAlt, siteName } from "@/lib/site";
 
 const title = "말미잘 블로그";
@@ -53,31 +54,29 @@ export const metadata: Metadata = {
 
 export default function BlogIndexPage() {
   const posts = getAllPostMeta();
+  // Isolated-category posts stay in `rest` (for their own tab) but are never featured.
+  const mainPosts = posts.filter((p) => !isIsolatedCategory(p.category));
 
-  const explicitlyFeatured = posts.filter((p) => p.featured);
+  const explicitlyFeatured = mainPosts.filter((p) => p.featured);
   if (process.env.NODE_ENV === "development" && explicitlyFeatured.length > 1) {
     console.warn(
       `[blog] ${explicitlyFeatured.length} posts have featured: true (${explicitlyFeatured.map((p) => p.slug).join(", ")}). Using the newest by date.`,
     );
   }
 
-  let featured: typeof posts[number];
-  let rest: typeof posts;
-
-  if (explicitlyFeatured.length >= 1) {
-    featured = explicitlyFeatured.sort((a, b) =>
-      a.date < b.date ? 1 : -1,
-    )[0];
-    rest = posts.filter((p) => p.slug !== featured.slug);
-  } else {
-    [featured, ...rest] = posts;
-  }
+  const featured =
+    explicitlyFeatured.length >= 1
+      ? explicitlyFeatured.sort((a, b) => (a.date < b.date ? 1 : -1))[0]
+      : mainPosts[0];
+  const rest = posts.filter((p) => p.slug !== featured.slug);
 
   const toCard = (p: PostMeta): BlogCardPost => ({
     ...p,
     dateLabel: formatDate(p.date),
   });
-  const mostRead = getMostReadPosts(posts).map(toCard);
+  const mostRead = getMostReadPosts(posts)
+    .filter((p) => !isIsolatedCategory(p.category))
+    .map(toCard);
   const gridPosts = rest.map(toCard);
 
   return (
@@ -102,7 +101,8 @@ export default function BlogIndexPage() {
               <FeaturedCard post={featured} />
               <MostReadPosts posts={mostRead} />
               {gridPosts.length > 0 && (
-                // Fallback is the full unfiltered grid, so the prerendered HTML links every post.
+                // Fallback is the "전체" grid, so the prerendered HTML links every post
+                // except isolated categories (those are linked from their own tab).
                 <Suspense
                   fallback={<CategoryGrid posts={gridPosts} active={null} />}
                 >

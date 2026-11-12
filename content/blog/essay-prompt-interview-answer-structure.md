@@ -1,7 +1,7 @@
 ---
 title: "제시문 면접 답변법: 준비 시간에 결론부터 정리하는 구조"
 date: 2026-11-12
-category: interview-meeting
+category: admissions
 excerpt: 제시문 면접은 정해진 준비 시간 안에 제시문을 읽고, 질문에 대한 내 판단을 말로 설명하는 면접이에요. 준비 시간 쓰는 법, 결론부터 말하는 답변 구조, 막히는 문항이 나왔을 때 대처법을 정리했어요.
 author: 박병호
 tags: [admissions, interview, structure]

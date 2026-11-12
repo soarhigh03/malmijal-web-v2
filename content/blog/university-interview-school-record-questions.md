@@ -1,7 +1,7 @@
 ---
 title: "학생부종합 면접 준비: 생기부로 예상 질문 뽑고 1분 안에 답하는 법"
 date: 2026-11-12
-category: interview-meeting
+category: admissions
 excerpt: 학종 면접(서류 기반 면접)의 질문은 대부분 내 학생부에서 나와요. 생기부를 예상 질문으로 바꾸는 방법, 활동 하나를 1분 답변으로 만드는 구조, 꼬리질문 대비법을 정리했어요.
 author: 박병호
 tags: [admissions, interview, speech]
