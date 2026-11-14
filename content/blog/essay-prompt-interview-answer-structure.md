@@ -71,7 +71,7 @@ tags: [admissions, interview, structure]
 
 속도가 빨라지는 문제는 [면접에서 긴장하면 말이 빨라질 때](/blog/interview-nervous-fast-speech)에서 따로 정리했어요.
 
-답변을 녹음해 두었다면 [말미잘](/download)의 첫 분석(무료)으로 답변 구조와 속도, 말끝 처리를 함께 확인할 수 있습니다.
+답변을 녹음해 두었다면 [말미잘](/download)의 분석으로 답변 구조와 속도, 말끝 처리를 함께 확인할 수 있습니다.
 
 ## 자주 묻는 질문 (FAQ)
 

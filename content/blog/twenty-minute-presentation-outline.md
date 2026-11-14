@@ -130,7 +130,7 @@ tags: [presentation, structure, workplace]
 
 구체적으로 어떤 문장을 덜어낼지는 [발표 대본 줄이는 법](/blog/shorten-presentation-script)의 수정 전후 예시를 참고하세요. 중간에 문장이 생각나지 않을 때를 대비하려면 [발표 중 대본을 까먹었을 때 복구하는 법](/blog/presentation-script-recovery)도 도움이 될 수 있어요.
 
-전체 시간은 타이머로 점검하고, 핵심 구간을 말할 때의 속도와 전달 방식은 [말미잘 첫 분석 무료](/download)로 확인해보세요.
+전체 시간은 타이머로 점검하고, 핵심 구간을 말할 때의 속도와 전달 방식은 [말미잘](/download)로 확인해보세요.
 
 ## 자주 묻는 질문 (FAQ)
 

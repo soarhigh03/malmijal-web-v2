@@ -30,8 +30,6 @@ function getRelatedPosts(current: Post, limit = 3): PostMeta[] {
 export function PostFooter({ post }: { post: Post }) {
   const related = getRelatedPosts(post);
 
-  if (related.length === 0) return null;
-
   return (
     <div className="mt-16">
       <p className="mt-10 pt-8 border-t border-black/10 text-black/70 text-base leading-relaxed">
@@ -40,31 +38,35 @@ export function PostFooter({ post }: { post: Post }) {
           href="/download"
           className="text-black font-medium underline underline-offset-4 hover:text-black/70 transition-colors"
         >
-          말미잘 첫 분석 무료
+          말미잘로 분석받기 →
         </Link>
       </p>
 
-      <p className="mt-12 font-kopub text-black/40 text-sm tracking-widest mb-6">
-        관련 글
-      </p>
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        {related.map((r) => (
-          <TrackedLink
-            key={r.slug}
-            href={`/blog/${r.slug}`}
-            fromSlug={post.slug}
-            position="related"
-            className="bg-white/60 backdrop-blur-sm rounded-2xl border border-black/5 p-5 block"
-          >
-            <p className="font-kopub text-black text-base leading-snug mb-2">
-              {r.title}
-            </p>
-            <p className="text-black/60 text-sm leading-relaxed line-clamp-2">
-              {r.excerpt}
-            </p>
-          </TrackedLink>
-        ))}
-      </div>
+      {related.length > 0 && (
+        <>
+          <p className="mt-12 font-kopub text-black/40 text-sm tracking-widest mb-6">
+            관련 글
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {related.map((r) => (
+              <TrackedLink
+                key={r.slug}
+                href={`/blog/${r.slug}`}
+                fromSlug={post.slug}
+                position="related"
+                className="bg-white/60 backdrop-blur-sm rounded-2xl border border-black/5 p-5 block"
+              >
+                <p className="font-kopub text-black text-base leading-snug mb-2">
+                  {r.title}
+                </p>
+                <p className="text-black/60 text-sm leading-relaxed line-clamp-2">
+                  {r.excerpt}
+                </p>
+              </TrackedLink>
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 }
