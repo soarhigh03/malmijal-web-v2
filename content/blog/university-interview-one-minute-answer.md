@@ -70,6 +70,8 @@ tags: [admissions, interview, speech]
 
 질문별 적정 길이는 [면접 답변 길이: 질문별 시간 기준](/blog/interview-answer-length)에서 더 자세히 다뤘어요. 녹음한 답변의 속도와 군말을 직접 확인하기 번거롭다면 [말미잘](/download)의 분석으로 볼 수 있습니다.
 
+학교·학원·기관에서 함께 쓰고 싶다면 [기관 도입 문의](/business?source=blog-university-interview-one-minute-answer)를 남겨 주세요.
+
 ## 자주 묻는 질문 (FAQ)
 
 ### 표의 글자 수와 내 연습 시간이 안 맞아요
