@@ -40,7 +40,19 @@ export const metadata: Metadata = {
   },
 };
 
+// Google Play's "Delete account URL" points at /privacy#account-deletion.
+const DELETION_HEADING = "<h3>계정 및 데이터 삭제</h3>";
+
 export default async function PrivacyPage() {
   const doc = await getLegalDoc("privacy");
-  return <LegalDocument doc={doc} />;
+  if (!doc.html.includes(DELETION_HEADING)) {
+    throw new Error(
+      "content/legal/privacy.md: account-deletion heading not found (anchor used by the Google Play Delete account URL)",
+    );
+  }
+  const html = doc.html.replace(
+    DELETION_HEADING,
+    '<h3 id="account-deletion" class="scroll-mt-28">계정 및 데이터 삭제</h3>',
+  );
+  return <LegalDocument doc={{ ...doc, html }} />;
 }
