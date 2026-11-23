@@ -93,6 +93,8 @@ tags: [admissions, interview, speech]
 
 녹음한 답변의 속도, 군말, 말끝 처리를 직접 세기 번거롭다면 [말미잘](/download)의 분석으로 확인할 수 있어요. Pro의 실전연습에서는 상황을 입시로 고르고 지원 학교·학과를 넣으면, 그에 맞춘 예상 질문으로 답변을 연습할 수 있습니다.
 
+학교·학원·기관에서 함께 쓰고 싶다면 [기관 도입 문의](/business?source=blog-university-interview-school-record-questions)를 남겨 주세요.
+
 ## 자주 묻는 질문 (FAQ)
 
 ### 생기부에 없는 활동을 이야기해도 되나요?

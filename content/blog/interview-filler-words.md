@@ -70,6 +70,8 @@ tags: [admissions, interview, delivery]
 
 녹음한 답변에서 군말과 쉼을 하나하나 세기 번거롭다면 [말미잘](/download)의 분석으로 확인할 수 있습니다. 군말이 긴장해서 빨라진 속도와 함께 나온다면 [면접에서 긴장하면 말이 빨라질 때](/blog/interview-nervous-fast-speech)도 같이 보세요.
 
+학교·학원·기관에서 함께 쓰고 싶다면 [기관 도입 문의](/business?source=blog-interview-filler-words)를 남겨 주세요.
+
 ## 자주 묻는 질문 (FAQ)
 
 ### 쉼이 길어지면 오히려 이상해 보이지 않나요?

@@ -76,6 +76,8 @@ tags: [admissions, interview, speech]
 
 설명을 녹음해 두었다면 [말미잘](/download)의 분석으로 속도와 말끝 처리, 답변 구조를 확인할 수 있어요. Pro의 실전연습에서 상황을 입시로 고르고 지원 학교·학과를 넣으면, 그에 맞춘 예상 질문으로 연습할 수 있습니다.
 
+학교·학원·기관에서 함께 쓰고 싶다면 [기관 도입 문의](/business?source=blog-arts-sports-admission-interview)를 남겨 주세요.
+
 ## 자주 묻는 질문 (FAQ)
 
 ### 실기 비중이 크면 면접은 대충 준비해도 되나요?

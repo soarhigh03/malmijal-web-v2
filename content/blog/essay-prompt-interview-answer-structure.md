@@ -73,6 +73,8 @@ tags: [admissions, interview, structure]
 
 답변을 녹음해 두었다면 [말미잘](/download)의 분석으로 답변 구조와 속도, 말끝 처리를 함께 확인할 수 있습니다.
 
+학교·학원·기관에서 함께 쓰고 싶다면 [기관 도입 문의](/business?source=blog-essay-prompt-interview-answer-structure)를 남겨 주세요.
+
 ## 자주 묻는 질문 (FAQ)
 
 ### 메모를 보면서 답해도 되나요?

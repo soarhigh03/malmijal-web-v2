@@ -18,6 +18,7 @@ const LINKS: NavLink[] = [
 ];
 
 const DOWNLOAD_URL = "/download";
+const BUSINESS_URL = "/business?source=nav";
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -162,7 +163,7 @@ export function Header() {
         </a>
 
         <nav
-          className={`hidden md:flex items-center gap-10 lg:gap-14 rounded-full transition-[background-color,backdrop-filter,box-shadow,border-color,padding] duration-300 ease-out ${
+          className={`hidden md:flex items-center gap-5 lg:gap-14 rounded-full transition-[background-color,backdrop-filter,box-shadow,border-color,padding] duration-300 ease-out ${
             scrolled
               ? "px-8 py-3 bg-white/45 backdrop-blur-xl backdrop-saturate-150 border border-white/40 shadow-[0_8px_28px_rgba(0,0,0,0.06)]"
               : "px-0 py-0 bg-transparent border border-transparent shadow-none"
@@ -187,12 +188,20 @@ export function Header() {
           })}
         </nav>
 
-        <a
-          href={DOWNLOAD_URL}
-          className="hidden md:inline-flex items-center justify-center px-6 py-3 rounded-full font-kopub text-sm text-white bg-black hover:bg-black/85 transition-colors"
-        >
-          다운로드
-        </a>
+        <div className="hidden md:flex items-center gap-3 shrink-0">
+          <a
+            href={BUSINESS_URL}
+            className="inline-flex items-center justify-center px-6 py-3 rounded-full font-kopub text-sm text-black bg-white shadow-[inset_0_0_0_1px_currentColor] hover:bg-black/5 transition-colors"
+          >
+            기관 도입 문의
+          </a>
+          <a
+            href={DOWNLOAD_URL}
+            className="hidden md:inline-flex items-center justify-center px-6 py-3 rounded-full font-kopub text-sm text-white bg-black hover:bg-black/85 transition-colors"
+          >
+            다운로드
+          </a>
+        </div>
 
         <button
           aria-label="Toggle menu"
@@ -272,13 +281,22 @@ export function Header() {
             })}
           </nav>
 
-          <a
-            href={DOWNLOAD_URL}
-            onClick={() => setOpen(false)}
-            className="mt-auto inline-flex items-center justify-center w-full px-4 py-3.5 rounded-full font-kopub text-base text-white bg-black hover:bg-black/85 transition-colors"
-          >
-            다운로드
-          </a>
+          <div className="mt-auto flex flex-col gap-3">
+            <a
+              href={BUSINESS_URL}
+              onClick={() => setOpen(false)}
+              className="inline-flex items-center justify-center w-full px-4 py-3.5 rounded-full font-kopub text-base text-black bg-white shadow-[inset_0_0_0_1px_currentColor] hover:bg-black/5 transition-colors"
+            >
+              기관 도입 문의
+            </a>
+            <a
+              href={DOWNLOAD_URL}
+              onClick={() => setOpen(false)}
+              className="mt-auto inline-flex items-center justify-center w-full px-4 py-3.5 rounded-full font-kopub text-base text-white bg-black hover:bg-black/85 transition-colors"
+            >
+              다운로드
+            </a>
+          </div>
         </div>
       </aside>
     </header>

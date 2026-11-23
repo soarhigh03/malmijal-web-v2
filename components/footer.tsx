@@ -62,6 +62,8 @@ export function Footer() {
           <Link href="/terms" className="hover:text-black/70 transition-colors">이용약관</Link>
           <span aria-hidden className="text-black/30">|</span>
           <Link href="/support" className="hover:text-black/70 transition-colors">고객지원</Link>
+          <span aria-hidden className="text-black/30">|</span>
+          <Link href="/business?source=footer" className="hover:text-black/70 transition-colors">기관 도입 문의</Link>
         </p>
         <p className="text-[11px] text-black/40">
           Google Play 및 Google Play 로고는 Google LLC의 상표입니다.

@@ -71,6 +71,8 @@ tags: [admissions, interview, delivery]
 
 답변 분량 자체가 많아서 서두르게 된다면 [입시 면접 1분 답변 분량 재는 법](/blog/university-interview-one-minute-answer)으로 먼저 분량을 줄이세요. 녹음한 답변의 속도와 쉼, 군말을 직접 세기 번거롭다면 [말미잘](/download)의 분석으로 확인할 수 있어요.
 
+학교·학원·기관에서 함께 쓰고 싶다면 [기관 도입 문의](/business?source=blog-interview-nervous-fast-speech)를 남겨 주세요.
+
 ## 자주 묻는 질문 (FAQ)
 
 ### 천천히 말하면 시간 안에 답을 다 못 하지 않을까요?
